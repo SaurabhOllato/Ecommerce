@@ -26,6 +26,7 @@ const Navbar = () => {
     // { name: "New Arrivals", path: "/new" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
+    { name: "Admin Panel", path: "/admin/dashboard" },
   ];
 
   return (

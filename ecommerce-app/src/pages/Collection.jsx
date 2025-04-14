@@ -1,6 +1,8 @@
 import React from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
 
 const collections = [
   {
@@ -57,6 +59,13 @@ const collections = [
 
 const CollectionPage = () => {
   return (
+     <motion.div
+        className="bg-white text-gray-800"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.4 }}
+      >
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white px-4 py-12 sm:px-6 lg:px-8">
       {/* Hero Header */}
       <div className="max-w-7xl mx-auto text-center mb-16">
@@ -134,6 +143,7 @@ const CollectionPage = () => {
         </Link>
       </div>
     </div>
+    </motion.div>
   );
 };
 
