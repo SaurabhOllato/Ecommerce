@@ -14,26 +14,26 @@ const Home = () => {
       id: 1,
       video: "/videos/Video-346.mp4",
       title: "✨ Rose Gold Bridal Set",
-      collection: "bridal-collection"
+      collection: "bridal-collection",
     },
     {
       id: 2,
       video: "/videos/Video-346.mp4",
       title: "💎 Diamond Stud Earrings",
-      collection: "earrings-collection"
+      collection: "earrings-collection",
     },
     {
       id: 3,
       video: "/videos/Video-346.mp4",
       title: "🌟 Pearl Necklace Set",
-      collection: "necklace-collection"
+      collection: "necklace-collection",
     },
     {
       id: 4,
       video: "/videos/Video-346.mp4",
       title: "💫 Silver Anklet Collection",
-      collection: "anklet-collection"
-    }
+      collection: "anklet-collection",
+    },
   ];
 
   useEffect(() => {
@@ -48,20 +48,20 @@ const Home = () => {
 
   const scrollToIndex = (index) => {
     if (!scrollContainerRef.current) return;
-    
+
     const container = scrollContainerRef.current;
     const item = container.children[index];
-    
+
     if (item) {
       const itemLeft = item.offsetLeft;
       const itemWidth = item.offsetWidth;
       const containerWidth = container.offsetWidth;
-      
+
       container.scrollTo({
         left: itemLeft - (containerWidth - itemWidth) / 2,
-        behavior: "smooth"
+        behavior: "smooth",
       });
-      
+
       setCurrentIndex(index);
     }
   };
@@ -84,28 +84,28 @@ const Home = () => {
       transition={{ duration: 0.4 }}
     >
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-16 bg-gradient-to-r from-pink-50 via-white to-pink-50 overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-16 bg-gradient-to-r from-primary/95 to-primary overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-pink-200 opacity-20 blur-xl"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-pink-300 opacity-10 blur-xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-pink-100 opacity-30 blur-lg"></div>
+        <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-accent/20 blur-xl"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-accent/10 blur-xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-accent/15 blur-lg"></div>
 
         {/* Left: Text Content */}
         <div className="flex-1 text-center md:text-left z-10 space-y-6">
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-gray-800"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-heading"
             data-aos="fade-right"
             data-aos-delay="100"
           >
             Welcome to{" "}
-            <span className="text-pink-600 relative inline-block">
+            <span className="text-accent relative inline-block group">
               Fashion Craze
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-pink-400 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-accent transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
             </span>
           </h1>
 
           <p
-            className="text-lg md:text-xl mb-6 max-w-lg mx-auto md:mx-0 text-gray-600 leading-relaxed"
+            className="text-lg md:text-xl mb-6 max-w-lg mx-auto md:mx-0 text-subtext leading-relaxed"
             data-aos="fade-right"
             data-aos-delay="200"
           >
@@ -121,15 +121,15 @@ const Home = () => {
           >
             <Link
               to="/shop"
-              className="relative overflow-hidden bg-pink-600 text-white px-8 py-3 rounded-full hover:bg-pink-700 transition-all duration-300 hover:shadow-lg hover:shadow-pink-200 font-medium group"
+              className="relative overflow-hidden bg-accent text-buttonText px-8 py-3 rounded-full hover:bg-accent/90 transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 font-medium group"
             >
               <span className="relative z-10">Shop Now</span>
-              <span className="absolute inset-0 bg-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+              <span className="absolute inset-0 bg-accent/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
             </Link>
 
             <Link
               to="/collections"
-              className="relative overflow-hidden border-2 border-pink-600 text-pink-600 px-8 py-3 rounded-full hover:bg-pink-50 transition-all duration-300 font-medium"
+              className="relative overflow-hidden border-2 border-accent text-accent px-8 py-3 rounded-full hover:bg-primary/20 transition-all duration-300 font-medium"
             >
               View Collections
             </Link>
@@ -150,13 +150,13 @@ const Home = () => {
                 />
               ))}
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-subtext">
               <p>Join 10k+ happy customers</p>
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <StarIcon
                     key={i}
-                    className="w-4 h-4 text-yellow-400 fill-current"
+                    className="w-4 h-4 text-accent fill-current"
                   />
                 ))}
                 <span>5.0 (2.5k reviews)</span>
@@ -167,7 +167,7 @@ const Home = () => {
 
         {/* Right: Main Hero Image */}
         <div
-          className="flex-2 mb-10 md:mb-0  relative"
+          className="flex-2 mb-10 md:mb-0 relative"
           data-aos="fade-left"
           data-aos-delay="100"
         >
@@ -175,12 +175,12 @@ const Home = () => {
             <img
               src="/hero.png"
               alt="Trendy Fashion Jewelry"
-              className="w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+              className="w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500 border-2 border-white/30"
             />
-            <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-gray-100">
+            <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-white/30">
               <div className="flex items-center gap-2">
-                <SparklesIcon className="w-6 h-6 text-pink-500" />
-                <span className="font-medium text-gray-800">Trending Now</span>
+                <SparklesIcon className="w-6 h-6 text-accent" />
+                <span className="font-medium text-heading">Trending Now</span>
               </div>
             </div>
           </div>
@@ -188,7 +188,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="max-w-6xl mx-auto py-16 px-4 grid md:grid-cols-3 gap-8 text-center">
+      <section className="max-w-6xl mx-auto py-16 px-4 grid  md:grid-cols-3 gap-8 text-center">
         <div>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAACvCAMAAABqzPMLAAAAmVBMVEX///8AAAAkHiD8/PwhHyCtq6wQDQ+IiIgiHR/4+PggGhy4t7iurq5/e3zZ19hUUFEYEBLr6uo2MzPh4OAIAADR0dEbFhcjISJZV1gcFBddXFwdGxzHx8coJycMCAqioqI9OjvBwcGWlpZxb3Dm5uanpaYtLS0XFRbx8fEPAAZGREVAPT6Rj5BNS0wVDA91c3RnZWYtJSh1b3FKIHrKAAANfklEQVR4nO2cC3eiPBPHE5KioNAiYNQoKlqhrqL7fv8P984EL6jxtk9X7Z78zu4RlVv+TiYzk1BCDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAw/FcYcxghfvPt+xg7hOGZn920b4IR5s/p9zL8d+TBhvRpxgf82xDcoh5Y5rNb9k1AF2tJLjL7+7CsOh3/MybEyJhyLie176PFZbZ+dru+DUYWX9yufecpYxv6mfOvmBAj3oegje88ZS45t53vPOMzAYGKbxbIEVIk/4xABCzI+maBeN1K8nPfQlgB/KQO+DcEcmVweZ+fFAX8DYGEtGl0juL3uvECPfDm3+iMQGz3enwmtnthp7uTsosJyd26Fsuy3IzOxuzJRuSo67NLbPbUCrT1EqW/KDcrn+AFSPUkpOJWQKC64FyvD+AKISRNyVOt6JYwZLOHXqDKJqvYzNE3TLeNFiRbg7OIKOGg0Pi+Fn03jDWaF/EvCxT3FeO+z4ivNuON352O+xvgDPF222c7g0CBaD8PgDwP1GsFeB8u2lLIbPoYJfQ4pEbBTV5KuePNrnofNKKbg98IW5dbYhKoyHt7gg7sNqfJNoFnlS5mUb/cPmPHccZ5tnSe6oekVJn12Zy72KYXWoECYblAtxvFEPi5s/fliGa0g9HNeybr8I1bpIQFM87bEnakPjnoYhuBHJ0CKMsnFZwunlgVYaRHL6bcyc4HaAWKk81n0JgpjbDAk3ckWB0jtr3eXST+Agsrd2M6gRgJ4hOUT5skUsAtPM9RMye9nHM3LvqgJo2wicpBNyIUhrGYJiDUlCYp2QTEpBnt+pJeIE/Tt2dTuLt8JrkcTH9CvKgVyLNpGSag04naU9yKKe43pkl/ly2sisQ5iZQqAvUpT47CRMrRAvFsgtsdRhzn1UXSCrS05/ii2t75mGPQQxZJEhKSJlINP0qiTrEkGyH3VAQaJkl6VO5uLDN7DCZEhlQIiIaeHTBeRydQMMt6cT+O+zmoID8m8JHzaUcTaEtHDtaTyWSNXTSYtUcTfBNWD64I5CX0JGv1aTbPUZZ1wqXdf/20TCeQT0Wm/EWATkfOV6vJnEbzAEQRm2+wqOpHdRu3s4PUtCLQ2raPL8dILVGGQ/IWREOz4OUT+xOB0Pkm2Qxj3g44iAb4EdAg44sc2hIW7XUKqDfNxK7hm+HBYLQVCIzvvf3r9IJgnplyan0YyezezxMIi2g2DZjjKAea2mLxucqgyfgWfPQmPmBqN2e7vWdvQXnr46Q4DXs2KPhpPCKlXGAI8dpouhjr2K1yAwKVTvbLIWEWLVSClxZFyDbfsXd7WSazulEMIyg3WRxfDvft2XBF2HB6GZdRfLzLX+PPbNUrTgQKZoVXnhFOGSX4c/fstrKnnj0o9wHTyUXiEXKY1ZOqQH6UnNgHhge+3Z6pdHo6y0Q2cx5UYGQsn4Z3MQ2YViCfRp+bU5aBIXiiJMKdWKsSR/uUNrfbFfYCjWmkL8XVkmKhDG9sC56tyWNiIZYv754krumcNMTRm1S2bGQftvJ2t4M+OsvWTawTvE1xNzvFzWbT0fkgRobFNtA+ApwTDdXpa1TI5PNBjrpJhXUXdQHjuMYHeTTKt45mEX2E2JJVlPgYR/NNlj/FKCcrc/n5mVGsVkTa2jRo+9Vdlysn3m0u5YPcUJ/Kbvt2upCsd3PdKLZartm2jOgte6r58XIJ/qQ5f98AO6yW5eayRvSj2KSwtJ0Hw/MsUn6aTbHyMc8fEi+y9P1OemPtKAbj+658WK6PKT+E9jj7gu2uduswrQWpTORMu1mYtFvOpg9LkaweUflgzuUa9Jm6tMYHEbKtQ7CDqv1Ba1l1S2tBeas7OXu3iySrlUlvDZOy5n9o+K3c/xOo4VUvEDnV4jAr1c9oIDuBgqTdO1PwfWsO7WyUlwa4tKGXheRVORUoHw4/MRr0h0CfNJSziIdsiGXDz/EUPk37ZAwvPuwDxtY8KMDvLYi73XPTY1+F251vOm8o6yJrvWzSeuqDYrqe4yqxIe31OjERC7SRXodAjgnfxU38uEFGv7wlbfggxZgejEKVYd6O7KjQkiSF29gaZINagtYeNNbfzalAKbjPFLKsifIgDsXpCzJIyQgEWr+TWkfthQd1PJI12ewwXN4Gihg2nRZc9+xmNXABBZfJ9EUVOhVotcZguk9mizxwwGbQPQTwvucRNJi5l08hO8PsFSTrLdIl0zrpq6WwrXN3WD7ngn4+voavj0GO7vtEIGw2KBHnNLOhocMBtr8PIeVqQiaQFmRZBmo1aS1dzgPyNhP+4YWq0z633mczsorzI97fQjtlcJIYngiUQ/PBLeR9Gk9Dh6wxxQB/BBnUegrWFNIxfrwYeNTLwcOitzoTKN5OHFmYyrxGH7smEPYpZ94h6S+1p1QeZt0D39Srwa/clBjgQUcjXkcV38PzRfub72gcWR8PtSC442avo2N91CFOBRoO4v7SnpLJ0o9jx6FpHIekBd2uKSS4I6+FHxMI7foow2dy3GvvFgiOfousr9ojLQhrEXaWfXRPKFznikATSm0vIM4M81DoaEAa4DzjmK6g26pV51PwUcRp1cC0lsfX/hOB0sKK0ocKxBpUcFE/zeDdKLgi0PYM5cvekeEH21mscnFN+Xrcqj/xQR4I1HjkIAZG/4smujAWrOCKQGpOUGVg23/lukLmbBYYqh7lkO3Hx9e+34LADrtW9Nj1MIw4+vDs2AVpa9L7l8qgV1rLLi9j5EyX+BMn3cnEA2vT9/FXVrneK9AyE/advfJhvIBAxPkluX1lYezTeAWBgpmU8gVWvmq5RaB9xeyGNeA6gTau/mQlyObLkEs5uPWGH80NAu3Gqu3ofhGNQDv3znSrzkAgW8rRHff8UG7rYixupIvhWK3VuKKQ1oLgmHz89tnwHd3xMeXZ++23/FhuEShIWzT6KiJKe/2rJ9T6IKe5LFeVJt6Je1LPrD3vETOnOgFxVLJ3dDXp0+Obv6PuJhDv0kmuiw6rBxwKpHYej+jmDG6X1vKj5I28gUDf+szaPTA27J2hoS3anxxfo5ZrbbMWaY/COwUiLKVyl/W4VvR+mO1AKhYJtfLxOcQ0088cStWMq13Mo5DTudtJWyHs0fRiWnksEAGFIS/c6VO3svlxPmjzh0z86GlSrp95lqrYfk2glAoh8CkUVx3EubB7FxcbnAg0LPNmtKG6JeqizqPJoauefPAnPpqQt84tXeg5zmWBcAkLhd+cC2mDk6Zfv5VI0cXVBsdO2v9S0vIuXrLgQuD3h1dcfwj6tFSMOSz0tYRXnTR8vWxb9bqQtOY7TphGUnWT0dkHCsmpQL0PtVCCrvpBHnuU8wH4+lE14GTvXYs+bebwvEdlKma73MX6FBuXDfyyT0xbXat8Lv48RwLFdICjXxsthKnHNFDkci5pe8TcdU+Xwz4KTUmr8tU1gdY2+p5BuD1H2AYfUs8u1Y+PBFq1oY/Wo52B+GqRTndSuaugBZq/RsFew0WB8hb6j6/hvjVpIgWXrQuZ5ZFAEXYwuptbxAXpajCrHDFFo3zRacMrAvlf2JhZsO2mjARUSC7phdrEoUAh9lGX7zoQLupTvbTSpcIvq/6yueplgcb4+xcTsheIDMCC+CWXWn2YBR+FcevVKR1wziO0yqobXxRW91X/mAUjXnYhSPuMwH98HEzIzDN85PTCoMxQwJ1Ab0ri6mpg1uuiBe3PMBZSTTy/KEPK5dIPtDAUCJtXGZRbXFnQ8aOWe/yBhLAvnAJhyD6xk35UBGI4qFuC+kG51La/anORiVd96IeBkxAiy7TPJ9NxI4IIGDvI3ilTCQpRZ5II7SPNLj7pCP9l25VuG8+AFuTtDneIo/Iy6qwSlfAkbSnxj2O8akERcy3J9ctjv4Zxgfl3K98bUCOCZEOOSMvV5y+YjEC0LAVo5ULnVYGUO9o1H2sb6KRt8qutdq+7og0d7JUfi/of7bpaCi+QKF30tqklQjNHH5Bu2LWgcC39QVVkUgsoOHX151PKeTSHzCFQdNsrQtuwB/wv6Oh6kempsHFv1NIxe3eWGPa60t/Uk5mH6Vid9seW9ghkVKH1TgZocXwQKokdDIO4hc+N9we/kNHSe/IT9JfZTiE7esin6g9yNla7BasEk3J37pw7ABcLs/1ffQDPkkaCD3jWKpOVvEaxP7u/WcUrv3Dv0ixpPfiW5cIVmKxG62G/4Q1s/PXr9NZpdDS6nOLj6UIm3tiP01EC266lnM7BLfxYhptiV/eLRuB30AXbvbt+8hRGQrS7Av/yC7r2+iB7/+GqbEGv3LFFteAmpJwdL5m6co5ldlypE6+7Kvo+0DMHI7saBHCZxYTdEbQ4ZDpoH+jTteOf3q92YDvyJVUxT1l0pa1QOz16iekokXuRC8t/abd8L9CUtPvVRi9Sd6Oo9ideNfeo3XZRYIh6PO3c4c8Ff+xguOSZbYtl+mdLMCCh8UZZRJOs5f0r7mfHZhVZ4Md+TjTrrG86BxiNE8b9OHTIa4c9fwS78M5gMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBi2/B/VSxpf2jMUVwAAAABJRU5ErkJggg=="
@@ -219,334 +219,329 @@ const Home = () => {
       </section>
 
       {/* New Arrivals Section */}
-      <section className="bg-white py-16 px-4">
+      <section className="bg-primary/50 py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-800">
-            ✨ New Arrivals ✨
+          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-heading">
+            <span className="text-accent">✨</span> New Arrivals{" "}
+            <span className="text-accent">✨</span>
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {/* Product Card 1 */}
-            <div className="bg-white shadow-xl rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
-              <img
-                src="/Ring.jpeg"
-                alt="Earrings"
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">
-                  Elegant Pearl Earrings
-                </h3>
-                <p className="text-sm text-gray-500 mb-2">₹499</p>
-                <button className="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
 
-            {/* Product Card 2 */}
-            <div className="bg-white shadow-xl rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
-              <img
-                src="/Jhumka.jpeg"
-                alt="Necklace"
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">Gold-Plated Necklace</h3>
-                <p className="text-sm text-gray-500 mb-2">₹899</p>
-                <button className="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700">
-                  Add to Cart
-                </button>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Product Cards */}
+            {[
+              {
+                name: "Elegant Pearl Earrings",
+                price: "₹499",
+                image: "/Ring.jpeg",
+              },
+              {
+                name: "Gold-Plated Necklace",
+                price: "₹899",
+                image: "/Jhumka.jpeg",
+              },
+              {
+                name: "Gold-Plated Necklace",
+                price: "₹899",
+                image: "/Jhumka.jpeg",
+              },
+              {
+                name: "Stylish Layered Bracelet",
+                price: "₹649",
+                image: "/Bracelet.jpeg",
+              },
+            ].map((product, index) => (
+              <div
+                key={index}
+                className="bg-white/90 backdrop-blur-sm border first-letter: border-primary/20  overflow-hidden hover:shadow-lg transition duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay={(index + 1) * 100}
+              >
+                <div className="relative overflow-hidden h-60">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-darkMocha/10 to-transparent" />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-heading mb-1">
+                    {product.name}
+                  </h3>
+                  <p className="text-subtext mb-3">{product.price}</p>
+                  <button className="w-full bg-accent/90 text-buttonText py-2.5 rounded-lg hover:bg-accent transition-all font-medium shadow-sm hover:shadow-accent/20">
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Product Card 3 */}
-            <div className="bg-white shadow-xl rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
-              <img
-                src="/Bracelet.jpeg"
-                alt="Bracelet"
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">
-                  Stylish Layered Bracelet
-                </h3>
-                <p className="text-sm text-gray-500 mb-2">₹649</p>
-                <button className="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
+          <div className="mt-12" data-aos="fade-up" data-aos-delay="400">
+            <Link
+              to="/shop"
+              className="inline-block border-2 border-accent/80 text-accent px-8 py-3 rounded-full hover:bg-accent/10 transition-all duration-300 font-medium hover:border-accent"
+            >
+              View All Products
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Shop by Category Section */}
-      <section className="bg-pink-50 py-16 px-4">
+      <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-800">
-            🛍️ Shop by Category
+          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-heading">
+            <span className="text-accent">🛍️</span> Shop by Category
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {/* Earrings */}
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 cursor-pointer group">
-              <img
-                src="/Ring.jpeg"
-                alt="Earrings"
-                className="w-full h-44 object-cover rounded-t-xl"
-              />
-              <div className="p-3 group-hover:bg-pink-100 transition">
-                <h4 className="text-lg font-semibold text-gray-700">
-                  Earrings
-                </h4>
+            {[
+              { label: "Earrings", image: "/Ring.jpeg" },
+              { label: "Necklaces", image: "/Kangan.jpeg" },
+              { label: "Bangles", image: "/Bracelet1.jpeg" },
+              { label: "Rings", image: "/Jhumka.jpeg" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white  shadow-md hover:shadow-xl transition duration-300 cursor-pointer group overflow-hidden"
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
+              >
+                <div className="relative overflow-hidden h-[21rem]">
+                  <img
+                    src={item.image}
+                    alt={item.label}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-darkMocha/30 to-transparent" />
+                </div>
+                <div className="p-4  transition-all duration-300 rounded-b-xl">
+                  <h4 className="text-lg font-semibold text-heading group-hover:text-buttonText transition-colors">
+                    {item.label}
+                  </h4>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Necklaces */}
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 cursor-pointer group">
-              <img
-                src="/Kangan.jpeg"
-                alt="Necklaces"
-                className="w-full h-44 object-cover rounded-t-xl"
-              />
-              <div className="p-3 group-hover:bg-pink-100 transition">
-                <h4 className="text-lg font-semibold text-gray-700">
-                  Necklaces
-                </h4>
-              </div>
-            </div>
-
-            {/* Bangles */}
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 cursor-pointer group">
-              <img
-                src="/Bracelet1.jpeg"
-                alt="Bangles"
-                className="w-full h-44 object-cover rounded-t-xl"
-              />
-              <div className="p-3 group-hover:bg-pink-100 transition">
-                <h4 className="text-lg font-semibold text-gray-700">Bangles</h4>
-              </div>
-            </div>
-
-            {/* Rings */}
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 cursor-pointer group">
-              <img
-                src="/Jhumka.jpeg"
-                alt="Rings"
-                className="w-full h-44 object-cover rounded-t-xl"
-              />
-              <div className="p-3 group-hover:bg-pink-100 transition">
-                <h4 className="text-lg font-semibold text-gray-700">Rings</h4>
-              </div>
-            </div>
+          <div className="mt-12" data-aos="fade-up" data-aos-delay="500">
+            <Link
+              to="/shop"
+              className="inline-block text-buttonText px-8 py-3 rounded-full  transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 font-medium"
+            >
+              View All Categories
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Shop the Look – Reels Section */}
-      <section className="bg-white py-16 px-4 relative">
-      <div className="max-w-6xl mx-auto mb-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-          🎥 Shop the Look
-        </h2>
-        <p className="text-sm text-gray-500 mt-2">
-          Scroll through style videos & grab your fav pieces!
-        </p>
-      </div>
-
-      {/* Carousel Container */}
-      <div className="relative">
-        {/* Navigation Arrows (Mobile Only) */}
-        {isMobile && (
-          <>
-            <button 
-              onClick={handlePrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition"
-              aria-label="Previous reel"
-            >
-              <ChevronLeft className="text-gray-800" size={24} />
-            </button>
-            <button 
-              onClick={handleNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition"
-              aria-label="Next reel"
-            >
-              <ChevronRight className="text-gray-800" size={24} />
-            </button>
-          </>
-        )}
-
-        {/* Reels Container */}
-        <div 
-          ref={scrollContainerRef}
-          className={`${
-            isMobile ? "overflow-x-hidden" : "overflow-x-auto"
-          } whitespace-nowrap space-x-6 px-2 flex scrollbar-hide`}
-        >
-          {reels.map((reel, index) => (
-            <div 
-              key={reel.id}
-              className={`inline-block w-72 md:w-96 bg-pink-50 rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden ${
-                isMobile ? "flex-shrink-0" : ""
-              }`}
-            >
-              <video
-                src={reel.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-[500px] object-cover"
-              />
-
-              <div className="p-4 text-center bg-white">
-                <h4 className="font-semibold text-gray-800 text-lg mb-2">
-                  {reel.title}
-                </h4>
-                <button 
-                  className="bg-pink-600 text-white py-2 px-5 rounded-full text-sm hover:bg-pink-700 transition"
-                  onClick={() => window.location.href = `/shop/${reel.collection}`}
-                >
-                  🛒 Shop Collection
-                </button>
-              </div>
-            </div>
-          ))}
+      <section className="py-16 px-4 relative bg-primary/50">
+        <div className="max-w-6xl mx-auto mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-heading">
+            <span className="text-accent">🎥</span> Shop the Look
+          </h2>
+          <p className="text-sm text-subtext mt-2">
+            Scroll through style videos & grab your fav pieces!
+          </p>
         </div>
 
-        {/* Indicators (Mobile Only) */}
-        {isMobile && (
-          <div className="flex justify-center mt-4 space-x-2">
-            {reels.map((_, index) => (
+        {/* Carousel Container */}
+        <div className="relative">
+          {isMobile && (
+            <>
               <button
-                key={index}
-                onClick={() => scrollToIndex(index)}
-                className={`w-2 h-2 rounded-full ${
-                  index === currentIndex ? "bg-pink-600" : "bg-gray-300"
+                onClick={handlePrev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition"
+                aria-label="Previous reel"
+              >
+                <ChevronLeft className="text-heading" size={24} />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition"
+                aria-label="Next reel"
+              >
+                <ChevronRight className="text-heading" size={24} />
+              </button>
+            </>
+          )}
+
+          {/* Reels */}
+          <div
+            ref={scrollContainerRef}
+            className={`${
+              isMobile ? "overflow-x-hidden" : "overflow-x-auto"
+            } whitespace-nowrap space-x-6 px-2 flex scrollbar-hide`}
+          >
+            {reels.map((reel, index) => (
+              <div
+                key={reel.id}
+                className={`inline-block w-72 md:w-96 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden ${
+                  isMobile ? "flex-shrink-0" : ""
                 }`}
-                aria-label={`Go to reel ${index + 1}`}
-              />
+              >
+                <video
+                  src={reel.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="p-4 text-center bg-white">
+                  <h4 className="font-semibold text-heading text-lg mb-2">
+                    {reel.title}
+                  </h4>
+                  <button
+                    className="bg-accent text-buttonText py-2 px-5 rounded-full text-sm hover:bg-accent/90 transition shadow-sm hover:shadow-accent/30"
+                    onClick={() =>
+                      (window.location.href = `/shop/${reel.collection}`)
+                    }
+                  >
+                    🛒 Shop Collection
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
-        )}
-      </div>
-    </section>
 
-      {/* review */}
-      <section className="bg-pink-50 py-16 px-4">
+          {/* Indicators */}
+          {isMobile && (
+            <div className="flex justify-center mt-4 space-x-2">
+              {reels.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToIndex(index)}
+                  className={`w-2 h-2 rounded-full ${
+                    index === currentIndex ? "bg-accent" : "bg-subtext/50"
+                  }`}
+                  aria-label={`Go to reel ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Review Section */}
+      <section className="bg-gradient-to-r from-primary to-primary/90 py-16 px-4">
         <div className="max-w-6xl mx-auto text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            💬 What Our Customers Say
+          <h2 className="text-3xl md:text-4xl font-bold text-heading">
+            <span className="text-accent">💬</span> What Our Customers Say
           </h2>
-          <p className="text-gray-600 mt-2 text-sm">
+          <p className="text-subtext mt-2 text-sm">
             Genuine reviews from our lovely shoppers!
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-2">
-          {/* Review 1 */}
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition">
-            <p className="text-gray-700 text-sm mb-4">
-              “Absolutely loved the rose gold set! Looks even better than the
-              photos 😍. Fast delivery too!”
-            </p>
-            <div className="flex items-center gap-3">
-              <img
-                src="https://i.pravatar.cc/100?img=12"
-                alt="customer"
-                className="w-10 h-10 rounded-full object-cover"
-              />
-              <div>
-                <h4 className="font-semibold text-gray-800 text-sm">
-                  Priya Sharma
-                </h4>
-                <p className="text-xs text-pink-500">Mumbai</p>
+          {[
+            {
+              text: "“Absolutely loved the rose gold set! Looks even better than the photos 😍. Fast delivery too!”",
+              img: "https://i.pravatar.cc/100?img=12",
+              name: "Priya Sharma",
+              city: "Mumbai",
+            },
+            {
+              text: "“Super happy with the earrings I ordered. Got compliments at a wedding 💖.”",
+              img: "https://i.pravatar.cc/100?img=25",
+              name: "Anjali Desai",
+              city: "Ahmedabad",
+            },
+            {
+              text: "“Fashion Craze is my new fav jewelry stop! Quality is 💯. Will order again soon.”",
+              img: "https://i.pravatar.cc/100?img=32",
+              name: "Ritika Jain",
+              city: "Delhi",
+            },
+          ].map((review, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition hover:translate-y-[-4px]"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <StarIcon
+                    key={i}
+                    className="w-4 h-4 text-accent fill-current"
+                  />
+                ))}
+              </div>
+              <p className="text-subtext text-sm mb-4">{review.text}</p>
+              <div className="flex items-center gap-3">
+                <img
+                  src={review.img}
+                  alt={review.name}
+                  className="w-10 h-10 rounded-full object-cover border-2 border-accent/20"
+                />
+                <div>
+                  <h4 className="font-semibold text-heading text-sm">
+                    {review.name}
+                  </h4>
+                  <p className="text-xs text-accent">{review.city}</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Review 2 */}
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition">
-            <p className="text-gray-700 text-sm mb-4">
-              “Super happy with the earrings I ordered. Got compliments at a
-              wedding 💖.”
-            </p>
-            <div className="flex items-center gap-3">
-              <img
-                src="https://i.pravatar.cc/100?img=25"
-                alt="customer"
-                className="w-10 h-10 rounded-full object-cover"
-              />
-              <div>
-                <h4 className="font-semibold text-gray-800 text-sm">
-                  Anjali Desai
-                </h4>
-                <p className="text-xs text-pink-500">Ahmedabad</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Review 3 */}
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition">
-            <p className="text-gray-700 text-sm mb-4">
-              “Fashion Craze is my new fav jewelry stop! Quality is 💯. Will
-              order again soon.”
-            </p>
-            <div className="flex items-center gap-3">
-              <img
-                src="https://i.pravatar.cc/100?img=32"
-                alt="customer"
-                className="w-10 h-10 rounded-full object-cover"
-              />
-              <div>
-                <h4 className="font-semibold text-gray-800 text-sm">
-                  Ritika Jain
-                </h4>
-                <p className="text-xs text-pink-500">Delhi</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* footer */}
-      <footer className="bg-gray-900 text-gray-200 py-10 px-4">
+      <footer className="bg-darkMocha text-primary py-10 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Info */}
           <div>
-            <h3 className="text-2xl font-bold text-pink-600 mb-3">
+            <h3 className="text-2xl font-bold text-accent mb-3">
               Fashion Craze
             </h3>
-            <p className="text-sm mb-2">
+            <p className="text-sm mb-2 text-primary/90">
               Discover your sparkle with our handpicked collection of stylish,
               affordable jewelry ✨
             </p>
-            <p className="text-xs text-gray-500 mt-4">
+            <p className="text-xs text-primary/50 mt-4">
               &copy; 2025 Fashion Craze. All rights reserved.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-3 text-primary">
+              Quick Links
+            </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/" className="hover:text-pink-600 transition">
+                <a
+                  href="/"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   Home
                 </a>
               </li>
               <li>
-                <a href="/shop" className="hover:text-pink-600 transition">
+                <a
+                  href="/shop"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   Shop
                 </a>
               </li>
               <li>
-                <a href="/about" className="hover:text-pink-600 transition">
+                <a
+                  href="/about"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="/contact" className="hover:text-pink-600 transition">
+                <a
+                  href="/contact"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   Contact
                 </a>
               </li>
@@ -555,25 +550,39 @@ const Home = () => {
 
           {/* Help */}
           <div>
-            <h4 className="text-lg font-semibold mb-3">Customer Care</h4>
+            <h4 className="text-lg font-semibold mb-3 text-primary">
+              Customer Care
+            </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/faq" className="hover:text-pink-600 transition">
+                <a
+                  href="/faq"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   FAQs
                 </a>
               </li>
               <li>
-                <a href="/shipping" className="hover:text-pink-600 transition">
+                <a
+                  href="/shipping"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   Shipping & Returns
                 </a>
               </li>
               <li>
-                <a href="/terms" className="hover:text-pink-600 transition">
+                <a
+                  href="/terms"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   Terms & Conditions
                 </a>
               </li>
               <li>
-                <a href="/privacy" className="hover:text-pink-600 transition">
+                <a
+                  href="/privacy"
+                  className="hover:text-accent transition text-primary/80"
+                >
                   Privacy Policy
                 </a>
               </li>
@@ -582,26 +591,28 @@ const Home = () => {
 
           {/* Newsletter / Socials */}
           <div>
-            <h4 className="text-lg font-semibold mb-3">Stay in Touch</h4>
+            <h4 className="text-lg font-semibold mb-3 text-primary">
+              Stay in Touch
+            </h4>
             <form className="flex flex-col space-y-2 text-sm">
               <input
                 type="email"
                 placeholder="Your email"
-                className="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-300"
+                className="px-3 py-2 rounded-lg border border-primary/30 bg-primary/10 focus:outline-none focus:ring-2 focus:ring-accent/50 text-primary placeholder-primary/50"
               />
-              <button className="bg-pink-600 text-white py-2 px-4 rounded-lg hover:bg-pink-700 transition">
+              <button className="bg-accent text-buttonText py-2 px-4 rounded-lg hover:bg-accent/90 transition font-medium">
                 Subscribe
               </button>
             </form>
 
-            <div className="flex gap-4 mt-4">
-              <a href="#" className="hover:text-pink-600">
+            <div className="flex gap-4 mt-4 text-primary/80">
+              <a href="#" className="hover:text-accent transition">
                 Instagram
               </a>
-              <a href="#" className="hover:text-pink-600">
+              <a href="#" className="hover:text-accent transition">
                 Facebook
               </a>
-              <a href="#" className="hover:text-pink-600">
+              <a href="#" className="hover:text-accent transition">
                 WhatsApp
               </a>
             </div>

@@ -16,6 +16,17 @@ module.exports = {
           '50%': { transform: 'translateY(-10px)' },
         },
       },
+      colors: {
+        primary: '#F4EFE8',       // Background
+        accent: '#C29963',        // Buttons, highlights
+        heading: '#2B1F1B',       // Main titles
+        subtext: '#84766A',       // Paragraph text
+        logoText: '#3B2F2F',      // Logo and brand name
+        buttonText: '#2E1C0E',    // Button text
+        darkMocha: '#4E3524',
+        
+      
+      }
     },
   },
   plugins: [],
