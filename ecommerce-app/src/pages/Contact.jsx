@@ -1,5 +1,7 @@
 import React from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { motion } from "framer-motion";
+
 
 const ContactPage = () => {
   // Sample coordinates for Mumbai (you can replace with your actual location)
@@ -16,6 +18,13 @@ const ContactPage = () => {
   };
 
   return (
+    <motion.div
+    className="bg-white text-gray-800"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4 }}
+  >
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white px-4 py-12 md:px-20">
       {/* Header */}
       <div className="text-center mb-12">
@@ -177,6 +186,7 @@ const ContactPage = () => {
         </div>
       </div>
     </div>
+    </motion.div>
   );
 };
 

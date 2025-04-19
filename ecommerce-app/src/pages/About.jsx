@@ -1,5 +1,14 @@
+import { motion } from "framer-motion";
+
 const About = () => {
     return (
+       <motion.div
+        className="bg-white text-gray-800"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.4 }}
+      >
       <section className="bg-white text-gray-800">
         {/* Hero Section */}
         <div className="bg-pink-100 py-16 px-4 text-center">
@@ -23,7 +32,7 @@ const About = () => {
   
           <div>
             <img
-              src="/images/about-banner.jpg"
+              src="https://www.potential.com/wp-content/uploads/2018/02/Teamwork-Team-Together-Everyone-Acheives-More.png"
               alt="Our team"
               className="w-full rounded-xl shadow-md object-cover h-[400px]"
             />
@@ -63,6 +72,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      </motion.div>
     );
   };
   
