@@ -75,6 +75,50 @@ const Home = () => {
     const newIndex = (currentIndex + 1) % reels.length;
     scrollToIndex(newIndex);
   };
+
+  const items = [
+    {
+      src: "/Bracelet.jpeg",
+      alt: "Gold Rings",
+    },
+    {
+      src: "/Bracelet.jpeg",
+      alt: "Gold Earrings on Stone",
+    },
+    {
+      src: "/Bracelet.jpeg",
+      alt: "Gold Chain on Rock",
+    },
+    {
+      src: "/Bracelet.jpeg",
+      alt: "Gold Necklace Draped on Stones",
+    },
+    {
+      src: "/Bracelet.jpeg",
+      alt: "Double Gold Rings",
+    },
+    {
+      src: "/Bracelet.jpeg",
+      alt: "Gold and Silver Earrings",
+    },
+  ];
+
+  const images = [
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+    "/Jhumka.jpeg",
+  ];
   return (
     <motion.div
       className="bg-white text-gray-800"
@@ -188,7 +232,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="max-w-6xl mx-auto py-16 px-4 grid  md:grid-cols-3 gap-8 text-center">
+      {/* <section className="max-w-6xl mx-auto py-16 px-4 grid  md:grid-cols-3 gap-8 text-center">
         <div>
           <img
             src="data:image/png;base64,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"
@@ -216,10 +260,10 @@ const Home = () => {
           <h3 className="text-xl font-semibold mb-2">Easy Returns</h3>
           <p className="text-sm">7-day hassle-free returns on all items.</p>
         </div>
-      </section>
+      </section> */}
 
       {/* New Arrivals Section */}
-      <section className="bg-primary/50 py-16 px-4">
+      <section className=" py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-10 text-heading">
             <span className="text-accent">✨</span> New Arrivals{" "}
@@ -289,52 +333,163 @@ const Home = () => {
       </section>
 
       {/* Shop by Category Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-heading">
-            <span className="text-accent">🛍️</span> Shop by Category
+      <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-800">
+            <span></span> Shop by Category
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { label: "Earrings", image: "/Ring.jpeg" },
-              { label: "Necklaces", image: "/Kangan.jpeg" },
-              { label: "Bangles", image: "/Bracelet1.jpeg" },
-              { label: "Rings", image: "/Jhumka.jpeg" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white  shadow-md hover:shadow-xl transition duration-300 cursor-pointer group overflow-hidden"
-                data-aos="fade-up"
-                data-aos-delay={i * 100}
-              >
-                <div className="relative overflow-hidden h-[21rem]">
+          {/* <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      
+      <div
+        class="bg-white shadow-md hover:shadow-xl transition duration-300 cursor-pointer group overflow-hidden rounded-lg"
+      >
+        <div class="relative overflow-hidden h-80">
+          <img
+            src="/Ring.jpeg"
+            alt="Earrings"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+        <div class="p-4">
+          <h4 class="text-lg font-semibold text-gray-800 group-hover:text-yellow-600 transition-colors">
+            Earrings
+          </h4>
+        </div>
+      </div>
+
+      <div
+        class="bg-white shadow-md hover:shadow-xl transition duration-300 cursor-pointer group overflow-hidden rounded-lg"
+      >
+        <div class="relative overflow-hidden h-80">
+          <img
+            src="/Kangan.jpeg"
+            alt="Necklaces"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+        <div class="p-4">
+          <h4 class="text-lg font-semibold text-gray-800 group-hover:text-yellow-600 transition-colors">
+            Necklaces
+          </h4>
+        </div>
+      </div>
+
+      <div
+        class="bg-white shadow-md hover:shadow-xl transition duration-300 cursor-pointer group overflow-hidden rounded-lg"
+      >
+        <div class="relative overflow-hidden h-80">
+          <img
+            src="/Bracelet1.jpeg"
+            alt="Bangles"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+        <div class="p-4">
+          <h4 class="text-lg font-semibold text-gray-800 group-hover:text-yellow-600 transition-colors">
+            Bangles
+          </h4>
+        </div>
+      </div>
+
+      <div
+        class="bg-white shadow-md hover:shadow-xl transition duration-300 cursor-pointer group overflow-hidden rounded-lg"
+      >
+        <div class="relative overflow-hidden h-80">
+          <img
+            src="/Jhumka.jpeg"
+            alt="Rings"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+        <div class="p-4">
+          <h4 class="text-lg font-semibold text-gray-800 group-hover:text-yellow-600 transition-colors">
+            Rings
+          </h4>
+        </div>
+      </div>
+    </div> */}
+
+          <div class="bg-white shadow-md hover:shadow-xl transition duration-300 cursor-pointer group overflow-hidden rounded-lg">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6  mx-auto">
+              {items.map((item, index) => (
+                <div
+                  key={index}
+                  className={`border border-[#e6e4de] p-2 bg-white shadow-sm  ${
+                    index === 3
+                      ? "col-span-2 md:col-span-1 row-span-2 md:row-span-2"
+                      : ""
+                  }`}
+                >
                   <img
-                    src={item.image}
-                    alt={item.label}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-darkMocha/30 to-transparent" />
                 </div>
-                <div className="p-4  transition-all duration-300 rounded-b-xl">
-                  <h4 className="text-lg font-semibold text-heading group-hover:text-buttonText transition-colors">
-                    {item.label}
-                  </h4>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="text-center mt-10">
+              <h2 className="text-4xl tracking-widest font-serif text-gray-300">
+                MOODBOARD
+              </h2>
+              <p className="-mt-4 text-3xl italic text-black font-light">
+                Aesthetic
+              </p>
+            </div>
           </div>
 
-          <div className="mt-12" data-aos="fade-up" data-aos-delay="500">
-            <Link
-              to="/shop"
-              className="inline-block text-buttonText px-8 py-3 rounded-full  transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 font-medium"
+          {/* <!-- View All Button --> */}
+          <div class="mt-12">
+            <a
+              href="/shop"
+              class="inline-block bg-yellow-600 text-white px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:bg-yellow-700 font-medium"
             >
               View All Categories
-            </Link>
+            </a>
           </div>
         </div>
       </section>
+
+      {/*  */}
+      <div className="bg-[#f5f0e9] min-h-screen p-6 md:p-12 font-serif">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {images.slice(0, 4).map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`jewelry-${i}`}
+              className="rounded-lg object-cover shadow-md"
+            />
+          ))}
+
+          {/* Center Text Block */}
+          <div className="col-span-2 md:col-span-2 flex flex-col justify-center items-center text-center py-10">
+            <h2 className="text-[40px] md:text-[60px] tracking-wide text-[#a08a6c] font-light leading-none">
+              430
+            </h2>
+            <h1 className="text-[32px] md:text-[48px] text-gray-800 tracking-wider">
+              INSTA <br /> <span className="text-[#c0a06f]">JEWELRY</span>
+            </h1>
+            <p className="text-sm mt-2 text-gray-500 uppercase tracking-wider">
+              Instagram posts, stories & highlight icons
+            </p>
+          </div>
+
+          {images.slice(4, 10).map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`jewelry-${i + 4}`}
+              className="rounded-lg object-cover shadow-md"
+            />
+          ))}
+        </div>
+      </div>
 
       {/* Shop the Look – Reels Section */}
       <section className="py-16 px-4 relative bg-primary/50">
