@@ -1,11 +1,22 @@
 import { SparklesIcon, StarIcon } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+
+const heroImages = [
+  "/hero.png",
+  "/Kangan.jpeg",
+  "/Ring.jpeg",
+];
+
 
 export default function Hero() {
 
   return (
-    <section className="relative min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-16 bg-gradient-to-r from-primary/95 to-primary overflow-hidden">
+    <section className="relative min-h-[85vh]  flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-24 py-16 bg-gradient-to-r from-primary/95 to-primary overflow-hidden">
         {/* Decorative elements */}
      
 
@@ -91,17 +102,34 @@ export default function Hero() {
           data-aos-delay="100"
         >
           <div className="relative w-full max-w-md mx-auto md:mx-0">
+          <Swiper
+        modules={[Autoplay, EffectFade]}
+        effect="fade"
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        loop={true}
+        className="rounded-2xl"
+      >
+        {heroImages.map((img, i) => (
+          <SwiperSlide key={i}>
             <img
+              src={img}
+              alt={`Hero ${i + 1}`}
+              className="w-full h-[450px] object-cover"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+            {/* <img
               src="/hero.png"
               alt="Trendy Fashion Jewelry"
-              className="w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500 border-2 border-white/30"
-            />
-            <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-white/30">
-              <div className="flex items-center gap-2">
+              className="w-full rounded-2xl  transform hover:scale-105 transition-transform duration-500 "
+            /> */}
+            {/* <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-white/30"> */}
+              {/* <div className="flex items-center gap-2">
                 <SparklesIcon className="w-6 h-6 text-accent" />
                 <span className="font-medium text-heading">Trending Now</span>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
         </div>
       </section>

@@ -28,16 +28,33 @@ export default function Category() {
     },
   ];
   return (
-    <section class="py-16 px-4 bg-gray-50">
+    <section class=" py-5 px-4 bg-gray-50">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
+    {/* <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
         Shop by Category
       </h2>
       <p class="text-gray-600 max-w-2xl mx-auto">
         Discover our exquisite collection of handcrafted jewelry pieces for every occasion.
       </p>
+    </div> */}
+    <div className="text-center my-10">
+  {/* Subtitle */}
+  {/* <p className="text-gray-400 text-sm mb-2">Best Seller Product This Week!</p> */}
+
+  {/* Title with underline and lines on both sides */}
+  <div className="flex items-center justify-center gap-4">
+    <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
+
+    <div className="inline-block">
+      <h2 className="text-xl sm:text-2xl font-bold tracking-wider">Shop by Category</h2>
+      <div className="w-10 h-0.5 bg-red-400 mx-auto mt-1"></div>
     </div>
+
+    <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
+  </div>
+</div>
+
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
       {/* <!-- Ring Category --> */}
@@ -162,7 +179,7 @@ export default function Category() {
     <div class="text-center mt-12">
       <a
         href="/shop"
-        class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg font-medium focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+        class="inline-block  text-black px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg font-medium focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
         aria-label="View all jewelry categories"
       >
         View All Categories
