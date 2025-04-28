@@ -1,5 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Bracelet from './../../assets/Bracelet.jpeg';
+import Bracelet1 from './../../assets/Bracelet1.jpeg';
+import Jhumka from './../../assets/Jhumka.jpeg';
+import Kangan from './../../assets/Kangan.jpeg';
+import Ring from './../../assets/Ring.jpeg';
 
 export default function NewArrival() {
   return (
@@ -36,22 +41,22 @@ export default function NewArrival() {
             {
               name: "Elegant Pearl Earrings",
               price: "₹499",
-              image: "/Ring.jpeg",
+              image: Bracelet,
             },
             {
               name: "Elegant Pearl Earrings",
               price: "₹499",
-              image: "/Ring.jpeg",
+              image: Ring,
             },
             {
               name: "Gold-Plated Necklace",
               price: "₹899",
-              image: "/Jhumka.jpeg",
+              image: Jhumka,
             },
             {
               name: "Gold-Plated Necklace",
               price: "₹899",
-              image: "/Jhumka.jpeg",
+              image: Bracelet1,
             },
            
             

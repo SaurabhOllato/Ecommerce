@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
 import { SparklesIcon, StarIcon } from "lucide-react";
+import Bracelet from './../../assets/Bracelet.jpeg';
+import Bracelet1 from './../../assets/Bracelet1.jpeg';
+import Jhumka from './../../assets/Jhumka.jpeg';
+import Kangan from './../../assets/Kangan.jpeg';
+import Ring from './../../assets/Ring.jpeg';
 
 import Hero from "./Hero";
 
@@ -10,22 +15,22 @@ import NewArrival from "./NewArrival";
 
 const Home = () => {
   const images = [
-    "/Jhumka.jpeg",
-    "/Kangan.jpeg",
-    "/Bracelet.jpeg",
-    "/Ring.jpeg",
-    "/Jhumka.jpeg",
-    "/Kangan.jpeg",
-    "/Bracelet.jpeg",
-    "/Ring.jpeg",
-    "/Jhumka.jpeg",
-    "/Kangan.jpeg",
-    "/Bracelet.jpeg",
-    "/Ring.jpeg",
-    "/Jhumka.jpeg",
-    "/Kangan.jpeg",
-    "/Bracelet.jpeg",
-    "/Ring.jpeg",
+     Jhumka,
+    Kangan,
+    Bracelet,
+    Ring,
+    Jhumka,
+    Kangan,
+    Bracelet,
+    Ring,
+    Jhumka,
+    Kangan,
+    Bracelet,
+    Ring,
+    Jhumka,
+    Kangan,
+    Bracelet,
+    Ring,
   ];
   return (
     <motion.div

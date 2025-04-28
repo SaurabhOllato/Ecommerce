@@ -1,4 +1,10 @@
 import React from "react";
+import Bracelet from './../../assets/Bracelet.jpeg';
+import Bracelet1 from './../../assets/Bracelet1.jpeg';
+import Jhumka from './../../assets/Jhumka.jpeg';
+import Kangan from './../../assets/Kangan.jpeg';
+import Ring from './../../assets/Ring.jpeg';
+
 
 export default function Category() {
   const items = [
@@ -61,7 +67,7 @@ export default function Category() {
       <div class="bg-white  h-64 transition duration-300 cursor-pointer group overflow-hidden rounded-lg">
         <div class="relative overflow-hidden h-48 md:h-48">
           <img
-            src="/Ring.jpeg"
+            src={Bracelet}
             alt="Gold and diamond rings collection"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
@@ -80,7 +86,7 @@ export default function Category() {
       <div class="bg-white shadow-md hover:shadow-xl transition h-64 duration-300 cursor-pointer group overflow-hidden rounded-lg">
         <div class="relative overflow-hidden h-48 md:h-48">
           <img
-            src="/Kangan.jpeg"
+            src={Bracelet1}
             alt="Traditional bangles and bracelets"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
@@ -99,7 +105,7 @@ export default function Category() {
       <div class="bg-white shadow-md hover:shadow-xl h-64 transition duration-300 cursor-pointer group overflow-hidden rounded-lg">
         <div class="relative overflow-hidden h-48">
           <img
-            src="/Bracelet1.jpeg"
+            src={Kangan}
             alt="Elegant bracelets collection"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
@@ -118,7 +124,7 @@ export default function Category() {
       <div class="bg-white shadow-md hover:shadow-xl h-64 transition duration-300 cursor-pointer group overflow-hidden rounded-lg">
         <div class="relative overflow-hidden h-48">
           <img
-            src="/Jhumka.jpeg"
+            src={Jhumka}
             alt="Traditional jhumka earrings"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
@@ -137,7 +143,7 @@ export default function Category() {
       <div class="bg-white shadow-md hover:shadow-xl h-64 transition duration-300 cursor-pointer group overflow-hidden rounded-lg">
         <div class="relative overflow-hidden h-48 ">
           <img
-            src="/Ring.jpeg"
+            src={Ring}
             alt="Luxury necklaces collection"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
@@ -156,7 +162,7 @@ export default function Category() {
       <div class="bg-white shadow-md hover:shadow-xl h-64 transition duration-300 cursor-pointer group overflow-hidden rounded-lg">
         <div class="relative overflow-hidden h-48 ">
           <img
-            src="/Kangan.jpeg"
+            src={Bracelet}
             alt="Latest jewelry arrivals"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
