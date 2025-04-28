@@ -22,7 +22,7 @@ const AppRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/Ecommerce" element={<Home />} />
+        <Route path="/Ecommerce/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
