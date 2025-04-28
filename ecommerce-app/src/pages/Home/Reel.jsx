@@ -14,10 +14,10 @@ export default function Reel() {
   const [likedReels, setLikedReels] = useState({});
 
   const reels = [
-    { id: 1, video: "/videos/Video-346.mp4", title: "Rose Gold Bridal Set", collection: "bridal-collection" },
-    { id: 2, video: "/videos/Video-346.mp4", title: "Diamond Stud Earrings", collection: "earrings-collection" },
-    { id: 3, video: "/videos/Video-346.mp4", title: "Pearl Necklace Set", collection: "necklace-collection" },
-    { id: 4, video: "/videos/Video-346.mp4", title: "Silver Anklet Collection", collection: "anklet-collection" },
+    { id: 1, video: "videos/Video-346.mp4", title: "Rose Gold Bridal Set", collection: "bridal-collection" },
+    { id: 2, video: "videos/Video-346.mp4", title: "Diamond Stud Earrings", collection: "earrings-collection" },
+    { id: 3, video: "videos/Video-346.mp4", title: "Pearl Necklace Set", collection: "necklace-collection" },
+    { id: 4, video: "videos/Video-346.mp4", title: "Silver Anklet Collection", collection: "anklet-collection" },
   ];
 
   useEffect(() => {

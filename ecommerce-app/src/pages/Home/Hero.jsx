@@ -5,18 +5,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import hero from './../../assets/Hero.png';
+import Ring from './../../assets/Ring.jpeg';
+import Kangan from './../../assets/Kangan.jpeg';
+
 
 const heroImages = [
-  "/hero.png",
-  "/Kangan.jpeg",
-  "/Ring.jpeg",
+  hero,
+Kangan,
+  Ring,
 ];
 
 
 export default function Hero() {
 
   return (
-    <section className="relative min-h-[85vh]  flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-24 py-16 bg-gradient-to-r from-primary/95 to-primary overflow-hidden">
+    <section className="relative min-h-[85vh]  flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-24 h-fit sm:py-16 bg-gradient-to-r from-primary/95 to-primary overflow-hidden">
         {/* Decorative elements */}
      
 
@@ -45,7 +49,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            className="flex flex-row sm:flex-row gap-4 justify-center md:justify-start"
             data-aos="fade-right"
             data-aos-delay="300"
           >
@@ -70,7 +74,7 @@ export default function Hero() {
             data-aos="fade-right"
             data-aos-delay="400"
           >
-            <div className="flex -space-x-2">
+            {/* <div className="flex -space-x-2">
               {[1, 2, 3].map((item) => (
                 <img
                   key={item}
@@ -79,10 +83,10 @@ export default function Hero() {
                   className="w-10 h-10 rounded-full border-2 border-white"
                 />
               ))}
-            </div>
+            </div> */}
             <div className="text-sm text-subtext">
-              <p>Join 10k+ happy customers</p>
-              <div className="flex items-center gap-1">
+              {/* <p>Join 10k+ happy customers</p> */}
+              {/* <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <StarIcon
                     key={i}
@@ -90,7 +94,7 @@ export default function Hero() {
                   />
                 ))}
                 <span>5.0 (2.5k reviews)</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -101,20 +105,20 @@ export default function Hero() {
           data-aos="fade-left"
           data-aos-delay="100"
         >
-          <div className="relative w-full max-w-md mx-auto md:mx-0">
+          <div className="relative w-full max-w-sm sm:max-w-lg  mx-auto md:mx-0">
           <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
-        className="rounded-2xl"
+        className="rounded-none sm:rounded-2xl"
       >
         {heroImages.map((img, i) => (
           <SwiperSlide key={i}>
             <img
               src={img}
               alt={`Hero ${i + 1}`}
-              className="w-full h-[450px] object-cover"
+              className="w-full h-[300px] sm:h-[450px] object-cover"
             />
           </SwiperSlide>
         ))}

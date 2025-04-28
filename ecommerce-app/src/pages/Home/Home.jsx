@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import { SparklesIcon, StarIcon } from "lucide-react";
-import Bracelet from './../../assets/Bracelet.jpeg';
-import Bracelet1 from './../../assets/Bracelet1.jpeg';
-import Jhumka from './../../assets/Jhumka.jpeg';
-import Kangan from './../../assets/Kangan.jpeg';
-import Ring from './../../assets/Ring.jpeg';
+import Bracelet from "./../../assets/Bracelet.jpeg";
+import Bracelet1 from "./../../assets/Bracelet1.jpeg";
+import Jhumka from "./../../assets/Jhumka.jpeg";
+import Kangan from "./../../assets/Kangan.jpeg";
+import Ring from "./../../assets/Ring.jpeg";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import Hero from "./Hero";
 
@@ -15,7 +20,7 @@ import NewArrival from "./NewArrival";
 
 const Home = () => {
   const images = [
-     Jhumka,
+    Jhumka,
     Kangan,
     Bracelet,
     Ring,
@@ -32,6 +37,39 @@ const Home = () => {
     Bracelet,
     Ring,
   ];
+
+  const reviews = [
+    {
+      text: "“Absolutely loved the rose gold set! Looks even better than the photos 😍. Fast delivery too!”",
+      img: "https://i.pravatar.cc/100?img=12",
+      name: "Priya Sharma",
+      city: "Mumbai",
+    },
+    {
+      text: "“Super happy with the earrings I ordered. Got compliments at a wedding 💖.”",
+      img: "https://i.pravatar.cc/100?img=25",
+      name: "Anjali Desai",
+      city: "Ahmedabad",
+    },
+    {
+      text: "“Fashion Craze is my new fav jewelry stop! Quality is 💯. Will order again soon.”",
+      img: "https://i.pravatar.cc/100?img=32",
+      name: "Ritika Jain",
+      city: "Delhi",
+    },
+    {
+      text: "“The necklace was exactly as shown. Perfect for my anniversary dinner!”",
+      img: "https://i.pravatar.cc/100?img=45",
+      name: "Neha Kapoor",
+      city: "Bangalore",
+    },
+    {
+      text: "“Excellent customer service and beautiful packaging. Made a great gift!”",
+      img: "https://i.pravatar.cc/100?img=51",
+      name: "Sanya Malhotra",
+      city: "Hyderabad",
+    }
+  ];  
   return (
     <motion.div
       className="bg-white text-gray-800"
@@ -82,10 +120,10 @@ const Home = () => {
             {/* Center Text Block banner*/}
 
             <div className="col-start-2 row-start-2 flex flex-col justify-center items-center text-center p-4 h-[220px]">
-              <h2 className="text-[40px] md:text-[60px] tracking-wide text-[#a08a6c] font-light leading-none">
+              <h2 className="text-[32px] md:text-[60px] tracking-wide text-[#a08a6c] font-light leading-none">
                 FC
               </h2>
-              <h1 className="text-[32px] md:text-[48px] text-gray-800 tracking-wider">
+              <h1 className="text-[22px] md:text-[48px] text-gray-800 tracking-wider">
                 INSTA <br /> <span className="text-[#c0a06f]">JEWELRY</span>
               </h1>
               <p className="text-sm mt-2 text-gray-500 uppercase tracking-wider">
@@ -122,86 +160,87 @@ const Home = () => {
       <Reel />
 
       {/* Review Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/20 py-2 mb-10 px-4">
-        {/* <div className="max-w-6xl mx-auto text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-heading">
-            <span className="text-accent"></span> What Our Customers Say
-          </h2>
-          <p className="text-subtext mt-2 text-sm">
-            Genuine reviews from our lovely shoppers!
-          </p>
-        </div> */}
-        <div className="text-center my-10">
-  {/* Subtitle */}
-  <p className="text-gray-400 text-sm mb-2">  Genuine reviews from our lovely shoppers!</p>
+      <section className="bg-gradient-to-r from-primary to-primary/20 py-12 mb-10 px-4">
+      <div className="text-center my-10">
+        {/* Subtitle */}
+        <p className="text-gray-400 text-sm mb-2">
+          Genuine reviews from our lovely shoppers!
+        </p>
 
-  {/* Title with underline and lines on both sides */}
-  <div className="flex items-center justify-center gap-4">
-    <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
+        {/* Title with underline and lines on both sides */}
+        <div className="flex items-center justify-center gap-4">
+          <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
 
-    <div className="inline-block">
-      <h2 className="text-xl sm:text-2xl font-bold tracking-wider"> What Our Customers Say</h2>
-      <div className="w-10 h-0.5 bg-red-400 mx-auto mt-1"></div>
-    </div>
+          <div className="inline-block">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-wider">
+              What Our Customers Say
+            </h2>
+            <div className="w-10 h-0.5 bg-red-400 mx-auto mt-1"></div>
+          </div>
 
-    <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
-  </div>
-</div>
+          <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
+        </div>
+      </div>
 
-
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-2">
-          {[
-            {
-              text: "“Absolutely loved the rose gold set! Looks even better than the photos 😍. Fast delivery too!”",
-              img: "https://i.pravatar.cc/100?img=12",
-              name: "Priya Sharma",
-              city: "Mumbai",
+      <div className="max-w-6xl mx-auto px-2">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
             },
-            {
-              text: "“Super happy with the earrings I ordered. Got compliments at a wedding 💖.”",
-              img: "https://i.pravatar.cc/100?img=25",
-              name: "Anjali Desai",
-              city: "Ahmedabad",
+            768: {
+              slidesPerView: 2,
             },
-            {
-              text: "“Fashion Craze is my new fav jewelry stop! Quality is 💯. Will order again soon.”",
-              img: "https://i.pravatar.cc/100?img=32",
-              name: "Ritika Jain",
-              city: "Delhi",
+            1024: {
+              slidesPerView: 3,
             },
-          ].map((review, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition hover:translate-y-[-4px]"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              <div className="flex items-center gap-2 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <StarIcon
-                    key={i}
-                    className="w-4 h-4 text-accent fill-current"
+          }}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+        >
+          {reviews.map((review, index) => (
+            <SwiperSlide key={index}>
+              <div 
+                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition hover:translate-y-[-4px] h-full"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <StarIcon
+                      key={i}
+                      className="w-4 h-4 text-accent fill-current"
+                    />
+                  ))}
+                </div>
+                <p className="text-subtext text-sm mb-4">{review.text}</p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src={review.img}
+                    alt={review.name}
+                    className="w-10 h-10 rounded-full object-cover border-2 border-accent/20"
                   />
-                ))}
-              </div>
-              <p className="text-subtext text-sm mb-4">{review.text}</p>
-              <div className="flex items-center gap-3">
-                <img
-                  src={review.img}
-                  alt={review.name}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-accent/20"
-                />
-                <div>
-                  <h4 className="font-semibold text-heading text-sm">
-                    {review.name}
-                  </h4>
-                  <p className="text-xs text-accent">{review.city}</p>
+                  <div>
+                    <h4 className="font-semibold text-heading text-sm">
+                      {review.name}
+                    </h4>
+                    <p className="text-xs text-accent">{review.city}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
-      </section>
+        </Swiper>
+      </div>
+    </section>
 
       {/* footer */}
       <Footer />
