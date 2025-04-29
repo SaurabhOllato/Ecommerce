@@ -22,7 +22,7 @@ const AppRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/Ecommerce/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
@@ -32,9 +32,12 @@ const AppRoutes = () => {
         <Route path="/collection" element={<CollectionPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/profile" element={<Profile />} />
-       
+
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="*" element={<div className="p-4">404 - Page Not Found</div>} />
+        <Route
+          path="*"
+          element={<div className="p-4">404 - Page Not Found</div>}
+        />
       </Routes>
     </AnimatePresence>
   );

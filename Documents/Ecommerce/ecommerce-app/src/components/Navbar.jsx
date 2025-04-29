@@ -87,7 +87,7 @@ const Navbar = () => {
       {/* Logo - centered on mobile, left on desktop */}
       <div className="flex items-center md:absolute md:left-4">
         <Link
-          to="/"
+          to="#"
           className="flex items-center gap-2 group"
           aria-label="Home"
         >
