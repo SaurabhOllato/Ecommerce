@@ -66,9 +66,7 @@ const CollectionPage = () => {
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4 }}
       >
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white px-4 py-12 sm:px-6 lg:px-8">
-      {/* Hero Header */}
-      <div className="max-w-7xl mx-auto text-center mb-16">
+        <div className="py-16 px-4 text-center mx-auto bg-primary   mb-16">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
           Discover Our <span className="text-pink-600">Collections</span>
         </h1>
@@ -76,9 +74,12 @@ const CollectionPage = () => {
           Explore our carefully curated jewelry collections designed to complement every style and occasion.
         </p>
       </div>
+    <div className="min-h-screen  px-4 py-12 bg-white sm:px-6 lg:px-8">
+      {/* Hero Header */}
+      
 
       {/* Collections Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {collections.map((collection, index) => (
           <Link 
             to={`/collections/${collection.name.toLowerCase().replace(/\s+/g, '-')}`}

@@ -11,7 +11,7 @@ const About = () => {
       >
       <section className="bg-white text-gray-800">
         {/* Hero Section */}
-        <div className="bg-pink-100 py-16 px-4 text-center">
+        <div className="bg-primary py-16 px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Fashion Craze</h1>
           <p className="max-w-2xl mx-auto text-gray-700 text-sm md:text-base">
             Where elegance meets affordability. Dive into our world of stunning artificial jewelry made to make you shine.

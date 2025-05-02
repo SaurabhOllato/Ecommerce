@@ -17,7 +17,7 @@ module.exports = {
         },
       },
       colors: {
-        primary: '#F4EFE8',       // Background
+        primary: '#F8F3D9',       // Background
         accent: '#C29963',        // Buttons, highlights
         heading: '#2B1F1B',       // Main titles
         subtext: '#84766A',       // Paragraph text

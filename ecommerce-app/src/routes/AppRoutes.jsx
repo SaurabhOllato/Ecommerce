@@ -17,12 +17,15 @@ import CollectionPage from "../pages/Collection";
 import ContactPage from "../pages/Contact";
 import Profile from "../pages/Profile";
 import Home from "../pages/Home/Home";
+import Dashboard from "../pages/admin/Dashboard";
+import AddProduct from "../pages/admin/AddProduct";
+import ManageProducts from "../pages/admin/ManageProducts";
 
 const AppRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/Ecommerce/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
@@ -32,7 +35,12 @@ const AppRoutes = () => {
         <Route path="/collection" element={<CollectionPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/profile" element={<Profile />} />
-       
+
+        {/* admin for smaller screen */}
+        <Route path="dashboard" element={<Dashboard />} />
+            <Route path="add-product" element={<AddProduct />} />
+            <Route path="manage-orders" element={<ManageProducts />} />
+
         <Route path="/auth" element={<AuthPage />} />
         <Route path="*" element={<div className="p-4">404 - Page Not Found</div>} />
       </Routes>

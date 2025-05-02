@@ -70,3 +70,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+.navbar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* Don't change height/padding here */
+}
+
+/* .swiper-button-prev{
+  color: black !important;
+  width: 2px !important;
+  height: 2px !important;
+} */
+

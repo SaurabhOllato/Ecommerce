@@ -3,23 +3,55 @@ import { Heart, Search, User, ShoppingCart, Menu } from "lucide-react";
 import logo from "../assets/logo.png";
 import { useState, useEffect } from "react";
 
+
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const navClasses = `sticky top-0 z-50 transition-all duration-300 ${
+    isHome
+      ? isScrolled
+        ? "bg-white shadow-lg py-2"
+        : "bg-primary/90 backdrop-blur-sm py-3"
+      : "bg-white py-2 shadow-md" // Default nav on other pages
+  }`;
 
   useEffect(() => {
+    if (location.pathname !== "/") return; // Disable on other pages
+  
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
+  
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
+  
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false); // Close mobile menu on route change
-  }, [location]);
+  // useEffect(() => {
+  //   setIsMobileMenuOpen(false); // Close mobile menu on route change
+  // }, [location]);
 
+  // useEffect(() => {
+  //   let ticking = false;
+  
+  //   const handleScroll = () => {
+  //     if (!ticking) {
+  //       window.requestAnimationFrame(() => {
+  //         setIsScrolled(window.scrollY > 200  );
+  //         ticking = false;
+  //       });
+  //       ticking = true;
+  //     }
+  //   };
+  
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+  
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Collections", path: "/collection" },
@@ -27,25 +59,25 @@ const Navbar = () => {
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
     { name: "Admin", path: "/admin" },
+    // { name: "dashboard", path: "/dashboard" , class: "lg:hidden sm:block"},
+    // { name: "product", path: "/add-product" },
+    // { name: "manage", path: "/manage-product" },
+    // { name: "orders", path: "/manage-orders" },
   ];
   // const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 20);
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <nav
-  className={`sticky top-0 z-50 transition-all duration-300 ${
-    isScrolled
-      ? "bg-white shadow-lg py-2"
-      : "bg-primary/90 backdrop-blur-sm py-3"
-  }`}
+    className={navClasses}
 >
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div
@@ -103,30 +135,33 @@ const Navbar = () => {
 
       {/* Centered navigation - hidden on mobile */}
       <div className="hidden md:flex mx-auto items-center space-x-6">
-        {navLinks.map((link) => (
-          <Link
-            key={link.name}
-            to={link.path}
-            className={`px-1 py-2 text-sm font-medium transition-colors relative ${
-              location.pathname === link.path
-                ? isScrolled
-                  ? "text-black"
-                  : "text-accent"
-                : isScrolled
-                ? "text-black hover:text-primary"
-                : "text-subtext hover:text-accent"
-            }`}
-          >
-            {link.name}
-            {location.pathname === link.path && (
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 w-full rounded-full ${
-                  isScrolled ? "bg-black" : "bg-accent"
-                }`}
-              ></span>
-            )}
-          </Link>
-        ))}
+      {navLinks.map((link) =>
+  link.class === "hidden" ? null : (
+    <Link
+      key={link.name}
+      to={link.path}
+      className={`px-1 py-2 text-sm font-medium transition-colors relative ${
+        location.pathname === link.path
+          ? isScrolled
+            ? "text-black"
+            : "text-accent"
+          : isScrolled
+          ? "text-black hover:text-primary"
+          : "text-subtext hover:text-accent"
+      }`}
+    >
+      {link.name}
+      {location.pathname === link.path && (
+        <span
+          className={`absolute bottom-0 left-0 h-0.5 w-full rounded-full ${
+            isScrolled ? "bg-black" : "bg-accent"
+          }`}
+        ></span>
+      )}
+    </Link>
+  )
+)}
+
       </div>
 
       {/* Icons on the right */}

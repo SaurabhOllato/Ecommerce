@@ -1,9 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { ChevronLeft, ChevronRight, Heart, Share2, Volume2, VolumeX, X } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Heart,
+  Share2,
+  Volume2,
+  VolumeX,
+  X,
+} from "lucide-react";
 
 export default function Reel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,10 +22,36 @@ export default function Reel() {
   const [likedReels, setLikedReels] = useState({});
 
   const reels = [
-    { id: 1, video: "videos/Video-346.mp4", title: "Rose Gold Bridal Set", collection: "bridal-collection" },
-    { id: 2, video: "videos/Video-346.mp4", title: "Diamond Stud Earrings", collection: "earrings-collection" },
-    { id: 3, video: "videos/Video-346.mp4", title: "Pearl Necklace Set", collection: "necklace-collection" },
-    { id: 4, video: "videos/Video-346.mp4", title: "Silver Anklet Collection", collection: "anklet-collection" },
+    {
+      id: 1,
+      video: "videos/Video-346.mp4",
+      title: "Rose Gold Bridal Set",
+      collection: "bridal-collection",
+    },
+    {
+      id: 2,
+      video: "videos/Video-346.mp4",
+      title: "Diamond Stud Earrings",
+      collection: "earrings-collection",
+    },
+    {
+      id: 3,
+      video: "videos/Video-346.mp4",
+      title: "Pearl Necklace Set",
+      collection: "necklace-collection",
+    },
+    {
+      id: 4,
+      video: "videos/Video-346.mp4",
+      title: "Silver Anklet Collection",
+      collection: "anklet-collection",
+    },
+    {
+      id: 4,
+      video: "videos/Video-346.mp4",
+      title: "Silver Anklet Collection",
+      collection: "anklet-collection",
+    },
   ];
 
   useEffect(() => {
@@ -76,8 +110,15 @@ export default function Reel() {
       </div>
 
       <div className="relative max-w-6xl mx-auto">
+        <div className="button-prev z-10 absolute left-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent  transition-all duration-200">
+          <ChevronLeft className="text-accent hover:text-white w-6 h-6  transition-all duration-300" />
+        </div>
+
+        <div className="button-next z-10 absolute right-[-20px] top-1/2 cursor-pointer -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200">
+          <ChevronRight className="text-accent w-6 h-6 hover:text-white transition-all duration-300" />
+        </div>
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           spaceBetween={20}
           slidesPerView={1.2}
           breakpoints={{
@@ -86,8 +127,18 @@ export default function Reel() {
             1024: { slidesPerView: 4 },
           }}
           navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".button-next",
+            prevEl: ".button-prev",
+          }}
+          pagination={{
+            clickable: true,
+            el: ".custom-swiper-pagination",
+          }}
+          onSwiper={(swiper) => {
+            setTimeout(() => {
+              swiper.pagination.init();
+              swiper.pagination.update();
+            }, 0);
           }}
           className="!px-4 !pb-10"
         >
@@ -122,13 +173,15 @@ export default function Reel() {
               </div>
             </SwiperSlide>
           ))}
-          <div className="swiper-button-prev !absolute left-2 top-1/2 -translate-y-1/2 z-10 rounded-full p-2">
+          {/* <div className="button-prev !absolute left-2 top-1/2 -translate-y-1/2 z-10 rounded-full p-2">
             <ChevronLeft className="text-heading" size={16} />
           </div>
-          <div className="swiper-button-next !absolute right-2 top-1/2 -translate-y-1/2 z-10 rounded-full p-2">
+          <div className="button-next !absolute right-2 top-1/2 -translate-y-1/2 z-10 rounded-full p-2">
             <ChevronRight className="text-heading" size={16} />
-          </div>
+          </div> */}
+           <div className="custom-swiper-pagination mt-6 flex justify-center" />  
         </Swiper>
+       
       </div>
 
       {/* Fullscreen Reel Modal */}
@@ -160,16 +213,10 @@ export default function Reel() {
             >
               <Share2 size={30} />
             </button>
-            <button
-              onClick={handleMuteToggle}
-              className="text-white"
-            >
+            <button onClick={handleMuteToggle} className="text-white">
               {isMuted ? <VolumeX size={30} /> : <Volume2 size={30} />}
             </button>
-            <button
-              onClick={closeFullScreen}
-              className="text-white mt-4"
-            >
+            <button onClick={closeFullScreen} className="text-white mt-4">
               <X size={30} />
             </button>
           </div>

@@ -7,12 +7,14 @@ import AddProduct from "./pages/admin/AddProduct";
 import ManageProducts from "./pages/admin/ManageProducts";
 import WhatsAppFloating from "./pages/Whatsapp";
 import ManageOrders from "./pages/admin/ManageOrders";
+import './index.css';
 
 const isAdmin = true;
 
 const App = () => {
   return (
     <Router>
+      <div id="scroll-detector" style={{ position: "absolute", top: 0, height: "1px", width: "100%" }}></div>
       <Navbar />
       <Routes>
         {/* Normal app routes */}

@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { SparklesIcon, StarIcon } from "lucide-react";
+import { ChevronLeftIcon, SparklesIcon, StarIcon } from "lucide-react";
 import Bracelet from "./../../assets/Bracelet.jpeg";
 import Bracelet1 from "./../../assets/Bracelet1.jpeg";
 import Jhumka from "./../../assets/Jhumka.jpeg";
 import Kangan from "./../../assets/Kangan.jpeg";
 import Ring from "./../../assets/Ring.jpeg";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import Hero from "./Hero";
 
@@ -17,6 +17,7 @@ import Footer from "./Footer";
 import Reel from "./Reel";
 import Category from "./Category";
 import NewArrival from "./NewArrival";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Home = () => {
   const images = [
@@ -68,8 +69,8 @@ const Home = () => {
       img: "https://i.pravatar.cc/100?img=51",
       name: "Sanya Malhotra",
       city: "Hyderabad",
-    }
-  ];  
+    },
+  ];
   return (
     <motion.div
       className="bg-white text-gray-800"
@@ -160,87 +161,99 @@ const Home = () => {
       <Reel />
 
       {/* Review Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/20 py-12 mb-10 px-4">
-      <div className="text-center my-10">
-        {/* Subtitle */}
-        <p className="text-gray-400 text-sm mb-2">
-          Genuine reviews from our lovely shoppers!
-        </p>
+      <section className="bg-gradient-to-r from-primary to-primary/20 py-12 mb-10 px-4 relative">
+        <div className="text-center my-10">
+          <p className="text-gray-400 text-sm mb-2">
+            Genuine reviews from our lovely shoppers!
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
+            <div className="inline-block">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-wider">
+                What Our Customers Say
+              </h2>
+              <div className="w-10 h-0.5 bg-red-400 mx-auto mt-1"></div>
+            </div>
+            <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
+          </div>
+        </div>
 
-        {/* Title with underline and lines on both sides */}
-        <div className="flex items-center justify-center gap-4">
-          <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
-
-          <div className="inline-block">
-            <h2 className="text-xl sm:text-2xl font-bold tracking-wider">
-              What Our Customers Say
-            </h2>
-            <div className="w-10 h-0.5 bg-red-400 mx-auto mt-1"></div>
+        <div className="max-w-6xl mx-auto px-2 relative">
+          {/* Navigation Buttons (placed outside Swiper but inside the container) */}
+          <div
+            className="button-prev z-10 absolute left-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200
+  sm:left-[-10px] xs:left-[-5px]"
+          >
+            <ChevronLeft className="text-accent hover:text-white w-6 h-6 transition-all duration-300 sm:w-5 sm:h-5 xs:w-4 xs:h-4" />
           </div>
 
-          <span className="hidden sm:block flex-1 h-px bg-gray-200"></span>
-        </div>
-      </div>
+          <div
+            className="button-next z-10 absolute right-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200
+  sm:right-[-10px] xs:right-[-5px]"
+          >
+            <ChevronRight className="text-accent hover:text-white w-6 h-6 transition-all duration-300 sm:w-5 sm:h-5 xs:w-4 xs:h-4" />
+          </div>
 
-      <div className="max-w-6xl mx-auto px-2">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-        >
-          {reviews.map((review, index) => (
-            <SwiperSlide key={index}>
-              <div 
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition hover:translate-y-[-4px] h-full"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon
-                      key={i}
-                      className="w-4 h-4 text-accent fill-current"
+          {/* Swiper */}
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            navigation={{
+              nextEl: ".button-next",
+              prevEl: ".button-prev",
+            }}
+            pagination={{ clickable: true,
+              el: ".custom-swiper-pagination",
+             }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+          >
+            {reviews.map((review, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition hover:translate-y-[-4px] h-full"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="flex items-center gap-2 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <StarIcon
+                        key={i}
+                        className="w-4 h-4 text-accent fill-current"
+                      />
+                    ))}
+                  </div>
+                  <p className="text-subtext text-sm mb-4">{review.text}</p>
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={review.img}
+                      alt={review.name}
+                      className="w-10 h-10 rounded-full object-cover border-2 border-accent/20"
                     />
-                  ))}
-                </div>
-                <p className="text-subtext text-sm mb-4">{review.text}</p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src={review.img}
-                    alt={review.name}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-accent/20"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-heading text-sm">
-                      {review.name}
-                    </h4>
-                    <p className="text-xs text-accent">{review.city}</p>
+                    <div>
+                      <h4 className="font-semibold text-heading text-sm">
+                        {review.name}
+                      </h4>
+                      <p className="text-xs text-accent">{review.city}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </section>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="custom-swiper-pagination mt-6 flex justify-center" />
+
+        </div>
+      </section>
 
       {/* footer */}
       <Footer />
