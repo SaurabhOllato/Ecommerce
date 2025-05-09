@@ -1,10 +1,17 @@
-import { motion } from "framer-motion";
-import { ChevronLeftIcon, SparklesIcon, StarIcon } from "lucide-react";
+// import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ChevronLeft,
+  ChevronRight,
+  SparklesIcon,
+  StarIcon,
+} from "lucide-react";
 import Bracelet from "./../../assets/Bracelet.jpeg";
 import Bracelet1 from "./../../assets/Bracelet1.jpeg";
 import Jhumka from "./../../assets/Jhumka.jpeg";
 import Kangan from "./../../assets/Kangan.jpeg";
 import Ring from "./../../assets/Ring.jpeg";
+import jewllery from "./../../assets/jewllery.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -17,7 +24,40 @@ import Footer from "./Footer";
 import Reel from "./Reel";
 import Category from "./Category";
 import NewArrival from "./NewArrival";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const centerTextVariant = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      delay: 0.3,
+    },
+  },
+};
 
 const Home = () => {
   const images = [
@@ -37,7 +77,27 @@ const Home = () => {
     Kangan,
     Bracelet,
     Ring,
+    jewllery
   ];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Replace with your actual product images
+  const productImages = [
+    Jhumka,
+    Kangan,
+    Bracelet,
+    Ring,
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === productImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [productImages.length]);
 
   const reviews = [
     {
@@ -85,6 +145,52 @@ const Home = () => {
       {/* Shop by Category Section */}
       <Category />
 
+      <section
+  className="relative bg-cover bg-center bg-no-repeat h-[40vh] lg:h-[80vh] flex items-center"
+  style={{
+    backgroundImage: `url(${images[16]})`, 
+  }}
+>
+  <div className="absolute inset-0 bg-black/30" /> {/* Optional dark overlay */}
+
+  <div className="relative z-10 px-6 md:px-24 max-w-2xl">
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-white text-2xl md:text-5xl font-bold mb-4"
+    >
+      New Arrivals Are Here ✨
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3 }}
+      className="text-white text-sm md:text-lg mb-6"
+    >
+      Discover timeless elegance with our latest handcrafted designs.
+    </motion.p>
+
+    <div className="flex gap-4">
+      <a
+        href="/new-arrivals"
+        className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-medium transition-transform transform hover:scale-105"
+      >
+        Shop Now
+      </a>
+      <a
+        href="/shop"
+        className="border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-amber-600 transition"
+      >
+        Browse All
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
       {/* Features Section */}
       {/* <Feature /> */}
 
@@ -93,34 +199,44 @@ const Home = () => {
 
       {/* Banner */}
       <section className="py-6">
-        <div className="bg-[#f5f0e9] p-6 md:p-12 font-serif min-h-[800px] ">
-          <div className="grid grid-cols-3 grid-rows-3 gap-4 max-w-7xl mx-auto">
+        <div className="bg-[#f5f0e9] p-6 md:p-12 font-serif min-h-[750px] lg:min-h-[800px]">
+          <motion.div
+            className="grid grid-cols-3 grid-rows-3 gap-4 max-w-7xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* Top Row Images */}
             {images.slice(0, 3).map((src, i) => (
               <div
                 key={`top-${i}`}
                 className={`${i === 1 ? "col-start-2" : ""}`}
               >
-                <img
+                <motion.img
                   src={src}
                   alt={`jewelry-${i}`}
-                  className="w-full h-[220px] rounded-lg object-cover shadow-md"
+                  className="w-full lg:h-[220px] h-[205px] rounded-lg object-cover shadow-md"
+                  variants={fadeUpVariant}
                 />
               </div>
             ))}
 
-            {/* Middle Row - Left Image, Center Text, Right Image */}
+            {/* Middle Row - Left Image */}
             <div className="row-start-2">
-              <img
+              <motion.img
                 src={images[3]}
                 alt="jewelry-3"
-                className="w-full h-[220px] rounded-lg object-cover shadow-md"
+                className="w-full lg:h-[220px] h-[205px] rounded-lg object-cover shadow-md"
+                variants={fadeUpVariant}
               />
             </div>
 
-            {/* Center Text Block banner*/}
-
-            <div className="col-start-2 row-start-2 flex flex-col justify-center items-center text-center p-4 h-[220px]">
+            {/* Center Text Block banner */}
+            <motion.div
+              className="col-start-2 row-start-2 flex flex-col justify-center items-center text-center p-4 h-[220px]"
+              variants={centerTextVariant}
+            >
               <h2 className="text-[32px] md:text-[60px] tracking-wide text-[#a08a6c] font-light leading-none">
                 FC
               </h2>
@@ -130,13 +246,15 @@ const Home = () => {
               <p className="text-sm mt-2 text-gray-500 uppercase tracking-wider">
                 Instagram posts, stories & highlight icons
               </p>
-            </div>
+            </motion.div>
 
+            {/* Middle Row - Right Image */}
             <div className="col-start-3 row-start-2">
-              <img
+              <motion.img
                 src={images[4]}
                 alt="jewelry-4"
-                className="w-full h-[220px] rounded-lg object-cover shadow-md"
+                className="w-full lg:h-[220px] h-[205px] rounded-lg object-cover shadow-md"
+                variants={fadeUpVariant}
               />
             </div>
 
@@ -146,14 +264,15 @@ const Home = () => {
                 key={`bottom-${i}`}
                 className={`row-start-3 ${i === 1 ? "col-start-2" : ""}`}
               >
-                <img
+                <motion.img
                   src={src}
                   alt={`jewelry-${i + 5}`}
-                  className="w-full h-[220px] rounded-lg object-cover shadow-md"
+                  className="w-full lg:h-[220px] h-[205px] rounded-lg object-cover shadow-md"
+                  variants={fadeUpVariant}
                 />
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -161,7 +280,7 @@ const Home = () => {
       <Reel />
 
       {/* Review Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/20 py-12 mb-10 px-4 relative">
+      <section className="bg-gradient-to-r from-primary to-primary/20 py-1 lg:py-5  px-4 relative">
         <div className="text-center my-10">
           <p className="text-gray-400 text-sm mb-2">
             Genuine reviews from our lovely shoppers!
@@ -180,19 +299,19 @@ const Home = () => {
 
         <div className="max-w-6xl mx-auto px-2 relative">
           {/* Navigation Buttons (placed outside Swiper but inside the container) */}
-          <div
-            className="button-prev z-10 absolute left-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200
+          {/* <div
+            className="hidden md:flex button-prev z-10 absolute left-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200
   sm:left-[-10px] xs:left-[-5px]"
           >
             <ChevronLeft className="text-accent hover:text-white w-6 h-6 transition-all duration-300 sm:w-5 sm:h-5 xs:w-4 xs:h-4" />
           </div>
 
           <div
-            className="button-next z-10 absolute right-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200
+            className="hidden md:flex button-next z-10 absolute right-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200
   sm:right-[-10px] xs:right-[-5px]"
           >
             <ChevronRight className="text-accent hover:text-white w-6 h-6 transition-all duration-300 sm:w-5 sm:h-5 xs:w-4 xs:h-4" />
-          </div>
+          </div> */}
 
           {/* Swiper */}
           <Swiper
@@ -208,9 +327,7 @@ const Home = () => {
               nextEl: ".button-next",
               prevEl: ".button-prev",
             }}
-            pagination={{ clickable: true,
-              el: ".custom-swiper-pagination",
-             }}
+            pagination={{ clickable: true, el: ".custom-swiper-pagination" }}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
@@ -249,9 +366,8 @@ const Home = () => {
                 </div>
               </SwiperSlide>
             ))}
+            <div className="custom-swiper-pagination mt-6 flex justify-center" />
           </Swiper>
-          <div className="custom-swiper-pagination mt-6 flex justify-center" />
-
         </div>
       </section>
 

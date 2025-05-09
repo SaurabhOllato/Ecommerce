@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import scrollbarHide from 'tailwind-scrollbar-hide'
+
 module.exports = {
   content: [
     "./index.html",
@@ -17,7 +19,8 @@ module.exports = {
         },
       },
       colors: {
-        primary: '#F8F3D9',       // Background
+        // primary: '#F8F3D9',       // Background
+        primary: '#FFFDF6',       // Background
         accent: '#C29963',        // Buttons, highlights
         heading: '#2B1F1B',       // Main titles
         subtext: '#84766A',       // Paragraph text
@@ -26,8 +29,8 @@ module.exports = {
         darkMocha: '#4E3524',
         
       
-      }
+      },
+      
     },
   },
-  plugins: [],
-}
+  plugins: [scrollbarHide],}

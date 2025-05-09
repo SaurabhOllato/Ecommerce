@@ -86,7 +86,7 @@ const Navbar = () => {
       }`}
     >
       {/* Hamburger menu for mobile */}
-      <div className="flex md:hidden items-center">
+      <div className="flex lg:hidden items-center">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="text-gray-700 hover:text-gray-900 focus:outline-none"
@@ -117,7 +117,7 @@ const Navbar = () => {
       </div>
 
       {/* Logo - centered on mobile, left on desktop */}
-      <div className="flex items-center md:absolute md:left-4">
+      <div className="flex items-center lg:absolute lg:left-4">
         <Link
           to="/"
           className="flex items-center gap-2 group"
@@ -134,7 +134,7 @@ const Navbar = () => {
       </div>
 
       {/* Centered navigation - hidden on mobile */}
-      <div className="hidden md:flex mx-auto items-center space-x-6">
+      <div className="hidden lg:flex mx-auto items-center space-x-6">
       {navLinks.map((link) =>
   link.class === "hidden" ? null : (
     <Link
@@ -166,7 +166,7 @@ const Navbar = () => {
 
       {/* Icons on the right */}
       <div className="flex items-center gap-4">
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           {[Search, Heart, User].map((Icon, idx) => {
             const paths = ["/search", "/wishlist", "/profile"];
             return (
@@ -216,7 +216,7 @@ const Navbar = () => {
 
   {/* Mobile Menu */}
   {isMobileMenuOpen && (
-    <div className="md:hidden bg-white shadow-lg rounded-b-lg">
+    <div className="lg:hidden bg-white shadow-lg rounded-b-lg">
       <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         {navLinks.map((link) => (
           <Link

@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/admin/*" element={<Navigate to="/" replace />} />
         )}
       </Routes>
-      <WhatsAppFloating />
+      {/* <WhatsAppFloating /> */}
     </Router>
   );
 };
