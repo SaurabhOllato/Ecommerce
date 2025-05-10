@@ -110,13 +110,13 @@ export default function Reel() {
       </div>
 
       <div className="relative max-w-6xl mx-auto">
-        {/* <div className="hidden md:flex button-prev z-10 absolute left-[-20px] top-1/2 -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent  transition-all duration-200">
+        <div className="hidden md:flex button-prev z-10 absolute left-[-20px] top-[39%] -translate-y-1/2 cursor-pointer bg-white shadow-md rounded-full p-2 hover:bg-accent  transition-all duration-200">
           <ChevronLeft className="text-accent hover:text-white w-6 h-6  transition-all duration-300" />
         </div>
 
-        <div className="hidden md:flex button-next z-10 absolute right-[-20px] top-1/2 cursor-pointer -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200">
+        <div className="hidden md:flex button-next z-10 absolute right-[-20px] top-[39%] cursor-pointer -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-accent transition-all duration-200">
           <ChevronRight className="text-accent w-6 h-6 hover:text-white transition-all duration-300" />
-        </div> */}
+        </div>
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={20}

@@ -2,40 +2,46 @@ import React from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Ring from "./../assets/Ring.jpeg";
+import Bracelet from "./../assets/Bracelet.jpeg";
+import Bracelet1 from "./../assets/Bracelet1.jpeg";
+import Jhumka from "./../assets/Jhumka.jpeg";
+import Kangan from "./../assets/Kangan.jpeg";
+
 
 
 const collections = [
   {
     name: "Necklaces",
-    image: "/Bracelet.jpeg",
+    image: Ring,
     description: "Elegant neckpieces for every occasion",
     items: 42,
     newArrival: true
   },
   {
     name: "Earrings",
-    image: "/Bracelet1.jpeg",
+    image: Bracelet,
     description: "Statement pieces to frame your face",
     items: 36,
     newArrival: false
   },
   {
     name: "Bracelets",
-    image: "/Kangan.jpeg",
+    image:Bracelet1,
     description: "Delicate adornments for your wrists",
     items: 28,
     newArrival: true
   },
   {
     name: "Rings",
-    image: "/Ring.jpeg",
+    image: Ring,
     description: "Perfect circles of beauty for your fingers",
     items: 54,
     newArrival: false
   },
   {
     name: "Anklets",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToyRg_0ie6g7gkt4ALb0_i_623Dqpp-mEvzA&s",
+    image: Jhumka,
     description: "Subtle charms for your graceful steps",
     items: 18,
     newArrival: true
@@ -43,7 +49,7 @@ const collections = [
   
   {
     name: "Bridal Sets",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToyRg_0ie6g7gkt4ALb0_i_623Dqpp-mEvzA&s",
+    image: Kangan,
     description: "Complete looks for your special day",
     items: 15,
     newArrival: false
@@ -60,9 +66,10 @@ const CollectionPage = () => {
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4 }}
       >
-        <div className="py-16 px-4 text-center mx-auto bg-white   mb-16">
+        <div className="py-5
+         px-4 text-center mx-auto bg-white  ">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-          Discover Our <span className="text-pink-600">Collections</span>
+          Discover Our <span className="text-darkMocha">Collections</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
           Explore our carefully curated jewelry collections designed to complement every style and occasion.

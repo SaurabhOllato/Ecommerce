@@ -11,12 +11,17 @@ module.exports = {
       animation: {
         'float-slow': 'float 6s ease-in-out infinite',
         'float-medium': 'float 4s ease-in-out infinite',
+          marquee: 'marquee 20s linear infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+        marquee: {
+      '0%': { transform: 'translateX(100%)' },
+      '100%': { transform: 'translateX(-100%)' },
+    },
       },
       colors: {
         // primary: '#F8F3D9',       // Background

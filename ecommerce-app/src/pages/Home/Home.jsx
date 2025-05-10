@@ -77,21 +77,16 @@ const Home = () => {
     Kangan,
     Bracelet,
     Ring,
-    jewllery
+    jewllery,
   ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   // Replace with your actual product images
-  const productImages = [
-    Jhumka,
-    Kangan,
-    Bracelet,
-    Ring,
-  ];
+  const productImages = [Jhumka, Kangan, Bracelet, Ring];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
+      setCurrentImageIndex((prevIndex) =>
         prevIndex === productImages.length - 1 ? 0 : prevIndex + 1
       );
     }, 3000); // Change image every 3 seconds
@@ -145,51 +140,52 @@ const Home = () => {
       {/* Shop by Category Section */}
       <Category />
 
-      <section
-  className="relative bg-cover bg-center bg-no-repeat h-[40vh] lg:h-[80vh] flex items-center"
-  style={{
-    backgroundImage: `url(${images[16]})`, 
-  }}
->
-  <div className="absolute inset-0 bg-black/30" /> {/* Optional dark overlay */}
+      <section className="group relative h-[40vh] lg:h-[80vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-in-out group-hover:scale-105"
+          style={{ backgroundImage: `url(${images[16]})` }}
+        ></div>
 
-  <div className="relative z-10 px-6 md:px-24 max-w-2xl">
-    <motion.h1
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-white text-2xl md:text-5xl font-bold mb-4"
-    >
-      New Arrivals Are Here ✨
-    </motion.h1>
+        {/* Optional Dark Overlay */}
+        <div className="absolute inset-0 bg-black/30" />
 
-    <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
-      className="text-white text-sm md:text-lg mb-6"
-    >
-      Discover timeless elegance with our latest handcrafted designs.
-    </motion.p>
+        {/* Content */}
+        <div className="relative z-10 px-6 md:px-24 max-w-2xl">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-white text-2xl md:text-5xl font-bold mb-4"
+          >
+            New Arrivals Are Here ✨
+          </motion.h1>
 
-    <div className="flex gap-4">
-      <a
-        href="/new-arrivals"
-        className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-medium transition-transform transform hover:scale-105"
-      >
-        Shop Now
-      </a>
-      <a
-        href="/shop"
-        className="border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-amber-600 transition"
-      >
-        Browse All
-      </a>
-    </div>
-  </div>
-</section>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-white text-sm md:text-lg mb-6"
+          >
+            Discover timeless elegance with our latest handcrafted designs.
+          </motion.p>
 
-
+          <div className="flex gap-4">
+            <a
+              href="/new-arrivals"
+              className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-medium transition-transform transform hover:scale-105"
+            >
+              Shop Now
+            </a>
+            <a
+              href="/shop"
+              className="border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-amber-600 transition"
+            >
+              Browse All
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
       {/* <Feature /> */}
