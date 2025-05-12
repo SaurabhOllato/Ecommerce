@@ -20,8 +20,10 @@ import Home from "../pages/Home/Home";
 import Dashboard from "../pages/admin/Dashboard";
 import AddProduct from "../pages/admin/AddProduct";
 import ManageProducts from "../pages/admin/ManageProducts";
+import { useLocation } from "react-router-dom";
 
 const AppRoutes = () => {
+    const location = useLocation();
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -38,11 +40,14 @@ const AppRoutes = () => {
 
         {/* admin for smaller screen */}
         <Route path="dashboard" element={<Dashboard />} />
-            <Route path="add-product" element={<AddProduct />} />
-            <Route path="manage-orders" element={<ManageProducts />} />
+        <Route path="add-product" element={<AddProduct />} />
+        <Route path="manage-orders" element={<ManageProducts />} />
 
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="*" element={<div className="p-4">404 - Page Not Found</div>} />
+        <Route
+          path="*"
+          element={<div className="p-4">404 - Page Not Found</div>}
+        />
       </Routes>
     </AnimatePresence>
   );
