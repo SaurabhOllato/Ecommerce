@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Heart, Search, User, ShoppingCart, Menu } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo2.png"; 
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
