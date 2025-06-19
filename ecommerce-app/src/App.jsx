@@ -16,12 +16,12 @@ const App = () => {
     <Router  basename="/Ecommerce">
       <div id="scroll-detector" style={{ position: "absolute", top: 0, height: "1px", width: "100%" }}></div>
       <div className="w-full bg-black overflow-hidden">
-  <div className="whitespace-nowrap animate-marquee text-white text-sm py-2">
+  {/* <div className="whitespace-nowrap animate-marquee text-white text-sm py-2">
     <span className="mx-8">🔥 20% off on all earrings</span>
     <span className="mx-8">💎 Free shipping above ₹999</span>
     <span className="mx-8">✨ Buy 2 Get 1 Free on Bangles</span>
     <span className="mx-8">🛍️ New Collection Just Dropped!</span>
-  </div>
+  </div> */}
 </div>
       <Navbar />
       <Routes>

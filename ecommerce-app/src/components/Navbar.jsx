@@ -10,13 +10,14 @@ const Navbar = () => {
   const isHome = location.pathname === "/";
   const [showSearch, setShowSearch] = useState(false);
 
-  const navClasses = `sticky top-0 z-50 transition-all duration-300 ${
-    isHome
-      ? isScrolled
-        ? "bg-white shadow-lg py-2"
-        : "bg-primary/90 backdrop-blur-sm py-3"
-      : "bg-white py-2 shadow-md" // Default nav on other pages
-  }`;
+const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 ${
+  isHome
+    ? isScrolled
+      ? "bg-white shadow-lg py-2"
+      : "bg-transparent backdrop-blur-sm py-3"
+    : "bg-white py-2 shadow-md"
+}`;
+
 
   useEffect(() => {
     if (location.pathname !== "/") return; // Disable on other pages
@@ -126,11 +127,11 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-1 py-2 text-sm font-medium transition-colors relative ${
+                  className={`px-1 py-2 text-sm font-medium  transition-colors relative ${
                     location.pathname === link.path
                       ? isScrolled
                         ? "text-black"
-                        : "text-accent"
+                        : "text-white"
                       : isScrolled
                       ? "text-black hover:text-primary"
                       : "text-subtext hover:text-accent"
@@ -160,10 +161,10 @@ const Navbar = () => {
                     <button
                       key={idx}
                       onClick={() => setShowSearch(!showSearch)}
-                      className={`p-1 transition-colors relative group ${
+                      className={`p-1  transition-colors relative group ${
                         isScrolled
                           ? "text-black hover:text-primary"
-                          : "text-subtext hover:text-accent"
+                          : "text-white hover:text-accent"
                       }`}
                     >
                       <Icon className="h-5 w-5" />
