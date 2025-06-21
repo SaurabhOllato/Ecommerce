@@ -8,6 +8,9 @@ import ManageProducts from "./pages/admin/ManageProducts";
 import WhatsAppFloating from "./pages/Whatsapp";
 import ManageOrders from "./pages/admin/ManageOrders";
 import './index.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const isAdmin = true;
 
@@ -41,6 +44,7 @@ const App = () => {
         )}
       </Routes>
       {/* <WhatsAppFloating /> */}
+       <ToastContainer position="top-right" autoClose={2000} />
     </Router>
   );
 };

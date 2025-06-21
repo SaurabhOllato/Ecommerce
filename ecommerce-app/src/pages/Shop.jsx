@@ -1,4 +1,5 @@
 import ProductCard from "../components/ProductCard";
+import ProductList from "./ProductList";
 
 const sampleProduct = {
   name: "Rose Gold Necklace Set",
@@ -142,10 +143,11 @@ const Shop = () => {
         </div>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[...Array(8)].map((_, i) => (
+      <div className="">
+        {/* {[...Array(8)].map((_, i) => (
           <ProductCard key={i} product={sampleProduct} />
-        ))}
+        ))} */}
+        <ProductList />
       </div>
       
       {/* Pagination - Added */}

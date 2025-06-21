@@ -1,29 +1,23 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Trash2 } from "lucide-react";
+import { decrementQuantity, incrementQuantity, removeFromCart } from "../feautures/cartActions";
+// import {
+//   removeFromCart,
+//   incrementQuantity,
+//   decrementQuantity,
+// } from "./features/cartActions"; // adjust path as per your project
 
 const Cart = () => {
-  // Dummy cart data
-  const cartItems = [
-    {
-      id: 1,
-      name: "Rose Gold Ring Set",
-      price: 349,
-      image: "/Ring.jpeg",
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: "Elegant Pearl Necklace",
-      price: 549,
-      image: "/Bracelet.jpeg",
-      quantity: 2,
-    },
-  ];
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems || []);
+  console.log(cartItems);
+  
 
-  const totalAmount = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  const totalAmount = cartItems.reduce((total, item) => {
+    const price = Number(item.price || 0);
+    return total + price * item.quantity;
+  }, 0);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -36,30 +30,45 @@ const Cart = () => {
           <div className="space-y-6">
             {cartItems.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="flex items-center justify-between bg-white shadow-md rounded-xl p-4"
               >
                 <div className="flex items-center gap-4">
                   <img
-                    src={item.image}
-                    alt={item.name}
+                    src={item.imageUrl}
+                    alt={item.title}
                     className="h-24 w-24 object-cover rounded-lg"
                   />
                   <div>
-                    <h4 className="text-lg font-semibold">{item.name}</h4>
-                    <p className="text-pink-600 font-bold">₹{item.price}</p>
+                    <h4 className="text-lg font-semibold">{item.title}</h4>
+                    <p className="text-pink-600 font-bold">
+                      ₹{Number(item.price || 0).toFixed(2)}
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  {/* Quantity control (add logic later) */}
+                  {/* Quantity control */}
                   <div className="flex items-center border px-2 rounded-lg">
-                    <button className="text-lg px-2">-</button>
+                    <button
+                      className="text-lg px-2"
+                      onClick={() => dispatch(decrementQuantity(item._id))}
+                    >
+                      -
+                    </button>
                     <span className="px-2">{item.quantity}</span>
-                    <button className="text-lg px-2">+</button>
+                    <button
+                      className="text-lg px-2"
+                      onClick={() => dispatch(incrementQuantity(item._id))}
+                    >
+                      +
+                    </button>
                   </div>
 
-                  <button className="text-red-500 hover:text-red-600">
+                  <button
+                    className="text-red-500 hover:text-red-600"
+                    onClick={() => dispatch(removeFromCart(item._id))}
+                  >
                     <Trash2 />
                   </button>
                 </div>

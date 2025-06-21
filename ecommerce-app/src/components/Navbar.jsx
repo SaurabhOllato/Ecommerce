@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Heart, Search, User, ShoppingCart, Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "../assets/logo2.png"; 
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,6 +60,13 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
     { name: "Contact", path: "/contact" },
     { name: "Admin", path: "/admin" },
   ];
+//  cart count using redux
+  const cartCount = useSelector((state) => state.cart.cartItems.length);
+
+
+  const wishlistCount = useSelector(
+  (state) => state.wishlist?.wishlistItems?.length || 0
+);
 
   return (
     <nav className={navClasses}>
@@ -153,7 +161,7 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
           {/* Icons on the right */}
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-4">
-              {[Search, Heart, User].map((Icon, idx) => {
+              {[Search,  User].map((Icon, idx) => {
                 const paths = ["/search", "/wishlist", "/profile"];
 
                 if (Icon === Search) {
@@ -205,7 +213,16 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                 className="ml-4 px-3 py-1 border rounded-md text-sm"
               />
             )}
-
+{/* wishlist */}
+            <Link to="/wishlist" className="relative">
+  <Heart className="h-5 w-5" />
+  {wishlistCount > 0 && (
+    <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+      {wishlistCount}
+    </span>
+  )}
+</Link>
+{/* cart */}
             <Link
               to="/cart"
               className={`p-1 transition-colors relative group ${
@@ -216,9 +233,11 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
             >
               <div className="relative">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-accent text-buttonText text-xs px-1.5 py-0.5 rounded-full flex items-center justify-center">
-                  2
-                </span>
+               {cartCount > 0 && (
+            <span className="absolute -top-2 -right-2 text-xs px-1.5 py-0.5 bg-pink-600 text-white rounded-full">
+              {cartCount}
+            </span>
+          )}
               </div>
               <span
                 className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${
