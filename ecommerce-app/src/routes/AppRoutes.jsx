@@ -21,6 +21,7 @@ import Dashboard from "../pages/admin/Dashboard";
 import AddProduct from "../pages/admin/AddProduct";
 import ManageProducts from "../pages/admin/ManageProducts";
 import { useLocation } from "react-router-dom";
+import PrivateRoute from "../components/PrivateRoute";
 
 const AppRoutes = () => {
     const location = useLocation();
@@ -36,7 +37,9 @@ const AppRoutes = () => {
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/collection" element={<CollectionPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/profile" element={<Profile />} />
+        {/* <Route path="/profile" element={<Profile />} /> */}
+        <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+
 
         {/* admin for smaller screen */}
         <Route path="dashboard" element={<Dashboard />} />

@@ -11,18 +11,20 @@ import {
   REGISTER,
 } from "redux-persist";
 import cartReducer from "../feautures/cartslice";
+import authReducer from "../feautures/authslice";
 
 import wishlistReducer from "../feautures/wishlistSlice";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   wishlist: wishlistReducer,
+  auth: authReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart", "wishlist"],
+  whitelist: ["cart", "wishlist","auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

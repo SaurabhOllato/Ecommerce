@@ -1,8 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Heart, Search, User, ShoppingCart, Menu } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "../assets/logo2.png"; 
-import { useSelector } from "react-redux";
+import logo from "../assets/logo2.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../feautures/authslice";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,15 +11,18 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [showSearch, setShowSearch] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const dispatch = useDispatch();
+const navigate = useNavigate();
+const { isAuthenticated, user } = useSelector((state) => state.auth);
 
-const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 ${
-  isHome
-    ? isScrolled
-      ? "bg-white shadow-lg py-2"
-      : "bg-transparent backdrop-blur-sm py-3"
-    : "bg-white py-2 shadow-md"
-}`;
-
+  const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 ${
+    isHome
+      ? isScrolled
+        ? "bg-white shadow-lg py-2"
+        : "bg-transparent backdrop-blur-sm py-3"
+      : "bg-white py-2 shadow-md"
+  }`;
 
   useEffect(() => {
     if (location.pathname !== "/") return; // Disable on other pages
@@ -60,13 +64,12 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
     { name: "Contact", path: "/contact" },
     { name: "Admin", path: "/admin" },
   ];
-//  cart count using redux
+  //  cart count using redux
   const cartCount = useSelector((state) => state.cart.cartItems.length);
 
-
   const wishlistCount = useSelector(
-  (state) => state.wishlist?.wishlistItems?.length || 0
-);
+    (state) => state.wishlist?.wishlistItems?.length || 0
+  );
 
   return (
     <nav className={navClasses}>
@@ -161,50 +164,30 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
           {/* Icons on the right */}
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-4">
-              {[Search,  User].map((Icon, idx) => {
-                const paths = ["/search", "/wishlist", "/profile"];
+             {/* USER MENU DROPDOWN */}
+  <div className="flex items-center gap-4">
+      {user ? (
+        <div className="relative group">
+          <button className="text-pink-600 font-semibold">
+            Hi, {user.name}
+          </button>
+          <div className="absolute hidden group-hover:flex flex-col bg-white shadow-md rounded mt-2 w-40 p-2 z-50">
+            <Link to="/profile" className="hover:bg-gray-100 px-2 py-1">Profile</Link>
+            <Link to="/orders" className="hover:bg-gray-100 px-2 py-1">Orders</Link>
+            <Link to="/contact" className="hover:bg-gray-100 px-2 py-1">Contact</Link>
+            <button
+              onClick={() => dispatch(logoutUser())}
+              className="text-left hover:bg-gray-100 px-2 py-1 text-red-500"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      ) : (
+        <Link to="/auth" className="text-pink-600 font-medium">Login</Link>
+      )}
+    </div>
 
-                if (Icon === Search) {
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => setShowSearch(!showSearch)}
-                      className={`p-1  transition-colors relative group ${
-                        isScrolled
-                          ? "text-black hover:text-primary"
-                          : "text-white hover:text-accent"
-                      }`}
-                    >
-                      <Icon className="h-5 w-5" />
-
-                      <span
-                        className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${
-                          isScrolled ? "bg-primary" : "bg-white"
-                        }`}
-                      ></span>
-                    </button>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={idx}
-                    to={paths[idx]}
-                    className={`p-1 transition-colors relative group ${
-                      isScrolled
-                        ? "text-black hover:text-primary"
-                        : "text-subtext hover:text-accent"
-                    }`}
-                  >
-                    <Icon className="h-5 w-5" />
-                    <span
-                      className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${
-                        isScrolled ? "bg-primary" : "bg-white"
-                      }`}
-                    ></span>
-                  </Link>
-                );
-              })}
             </div>
             {showSearch && (
               <input
@@ -213,16 +196,16 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                 className="ml-4 px-3 py-1 border rounded-md text-sm"
               />
             )}
-{/* wishlist */}
+            {/* wishlist */}
             <Link to="/wishlist" className="relative">
-  <Heart className="h-5 w-5" />
-  {wishlistCount > 0 && (
-    <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 py-0.5 rounded-full">
-      {wishlistCount}
-    </span>
-  )}
-</Link>
-{/* cart */}
+              <Heart className="h-5 w-5" />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
+            {/* cart */}
             <Link
               to="/cart"
               className={`p-1 transition-colors relative group ${
@@ -233,11 +216,11 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
             >
               <div className="relative">
                 <ShoppingCart className="h-5 w-5" />
-               {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 text-xs px-1.5 py-0.5 bg-pink-600 text-white rounded-full">
-              {cartCount}
-            </span>
-          )}
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 text-xs px-1.5 py-0.5 bg-pink-600 text-white rounded-full">
+                    {cartCount}
+                  </span>
+                )}
               </div>
               <span
                 className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${
