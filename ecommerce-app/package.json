@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "framer-motion": "^12.6.3",
+    "install": "^0.13.0",
     "lucide-react": "^0.487.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -23,7 +24,8 @@
     "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^7.5.0",
     "swiper": "^11.2.6",
-    "tailwind-scrollbar-hide": "^2.0.0"
+    "tailwind-scrollbar-hide": "^2.0.0",
+    "vercel": "^25.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
