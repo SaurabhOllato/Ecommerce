@@ -13,7 +13,7 @@ const isAdmin = true;
 
 const App = () => {
   return (
-    <Router  basename="/Ecommerce">
+    <Router  basename="/">
       <div id="scroll-detector" style={{ position: "absolute", top: 0, height: "1px", width: "100%" }}></div>
       <div className="w-full bg-black overflow-hidden">
   {/* <div className="whitespace-nowrap animate-marquee text-white text-sm py-2">

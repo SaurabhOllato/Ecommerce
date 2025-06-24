@@ -9,7 +9,7 @@ const About = () => {
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4 }}
       >
-      <section className="bg-white text-gray-800">
+      <section className="bg-white text-gray-800 py-10">
         {/* Hero Section */}
         <div className="bg-primary py-16 px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Fashion Craze</h1>

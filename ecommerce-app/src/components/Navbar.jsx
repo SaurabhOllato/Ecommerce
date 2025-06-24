@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Heart, Search, User, ShoppingCart, Menu } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "../assets/logo2.png"; 
+import logo from "../assets/logo2.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,14 +10,12 @@ const Navbar = () => {
   const isHome = location.pathname === "/";
   const [showSearch, setShowSearch] = useState(false);
 
-const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 ${
-  isHome
-    ? isScrolled
-      ? "bg-white shadow-lg py-2"
-      : "bg-transparent backdrop-blur-sm py-3"
-    : "bg-white py-2 shadow-md"
-}`;
-
+  const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 ${isHome
+      ? isScrolled
+        ? "bg-white  shadow-lg py-2"
+        : "bg-transparent backdrop-blur-sm py-3"
+      : "bg-white py-2 shadow-md"
+    }`;
 
   useEffect(() => {
     if (location.pathname !== "/") return; // Disable on other pages
@@ -57,16 +55,15 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
     // { name: "New Arrivals", path: "/new" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
-    { name: "Admin", path: "/admin" },
+    // { name: "Admin", path: "/admin" },
   ];
 
   return (
     <nav className={navClasses}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`relative flex items-center justify-between transition-all duration-300 ease-in-out px-4 ${
-            isScrolled ? "h-12" : "h-16"
-          }`}
+          className={`relative flex items-center justify-between transition-all duration-300 ease-in-out px-4 ${isScrolled ? "h-12" : "h-16"
+            }`}
         >
           {/* Hamburger menu for mobile */}
           <div className="flex lg:hidden items-center">
@@ -111,9 +108,8 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                 className="h-24 w-auto transition-transform duration-300 group-hover:scale-105"
               />
               <span
-                className={`hidden text-xl font-bold ${
-                  isScrolled ? "text-black" : "text-logoText"
-                }`}
+                className={`hidden text-xl font-bold ${isScrolled ? "text-black" : "text-logoText"
+                  }`}
               >
                 Fashion Craze
               </span>
@@ -127,23 +123,26 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-1 py-2 text-sm font-medium  transition-colors relative ${
-                    location.pathname === link.path
+                  className={`group px-1 py-2 text-sm font-medium relative transition-colors
+    ${location.pathname === link.path
                       ? isScrolled
                         ? "text-black"
-                        : "text-white"
+                        : "text-subtext"
                       : isScrolled
-                      ? "text-black hover:text-primary"
-                      : "text-subtext hover:text-accent"
-                  }`}
+                        ? "text-black hover:text-black" // consistent dark on hover
+                        : "text-subtext hover:text-text" // darker hover color
+                    }
+  `}
                 >
                   {link.name}
-                  {location.pathname === link.path && (
+
+                  {location.pathname === link.path ? (
                     <span
-                      className={`absolute bottom-0 left-0 h-0.5 w-full rounded-full ${
-                        isScrolled ? "bg-black" : "bg-accent"
-                      }`}
-                    ></span>
+                      className={`absolute bottom-0 left-0 h-0.5 w-full rounded-full transition-all duration-300 ${isScrolled ? "bg-black" : "bg-accent"
+                        }`}
+                    />
+                  ) : (
+                    <span className="absolute bottom-0 left-0 h-0.5 w-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 bg-accent" />
                   )}
                 </Link>
               )
@@ -161,18 +160,16 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                     <button
                       key={idx}
                       onClick={() => setShowSearch(!showSearch)}
-                      className={`p-1  transition-colors relative group ${
-                        isScrolled
-                          ? "text-black hover:text-primary"
+                      className={`p-1  transition-colors relative group ${isScrolled
+                          ? "text-black hover:text-black"
                           : "text-white hover:text-accent"
-                      }`}
+                        }`}
                     >
                       <Icon className="h-5 w-5" />
 
                       <span
-                        className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${
-                          isScrolled ? "bg-primary" : "bg-white"
-                        }`}
+                        className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${isScrolled ? "bg-primary" : "bg-white"
+                          }`}
                       ></span>
                     </button>
                   );
@@ -182,17 +179,15 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                   <Link
                     key={idx}
                     to={paths[idx]}
-                    className={`p-1 transition-colors relative group ${
-                      isScrolled
-                        ? "text-black hover:text-primary"
+                    className={`p-1 transition-colors relative group ${isScrolled
+                        ? "text-black hover:text-black"
                         : "text-subtext hover:text-accent"
-                    }`}
+                      }`}
                   >
                     <Icon className="h-5 w-5" />
                     <span
-                      className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${
-                        isScrolled ? "bg-primary" : "bg-white"
-                      }`}
+                      className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${isScrolled ? "bg-primary" : "bg-white"
+                        }`}
                     ></span>
                   </Link>
                 );
@@ -208,11 +203,10 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
 
             <Link
               to="/cart"
-              className={`p-1 transition-colors relative group ${
-                isScrolled
-                  ? "text-black hover:text-primary"
+              className={`p-1 transition-colors relative group ${isScrolled
+                  ? "text-black hover:text-black"
                   : "text-subtext hover:text-accent"
-              }`}
+                }`}
             >
               <div className="relative">
                 <ShoppingCart className="h-5 w-5" />
@@ -221,9 +215,8 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                 </span>
               </div>
               <span
-                className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${
-                  isScrolled ? "bg-primary" : "bg-accent"
-                }`}
+                className={`absolute -bottom-1 left-1/2 w-0 h-0.5 transition-all group-hover:w-3/4 group-hover:-translate-x-1/2 ${isScrolled ? "bg-primary" : "bg-accent"
+                  }`}
               ></span>
             </Link>
           </div>
@@ -239,11 +232,10 @@ const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 $
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  location.pathname === link.path
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location.pathname === link.path
                     ? "bg-primary/10 text-black"
                     : "text-gray-700 hover:bg-primary/10 hover:text-black"
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
