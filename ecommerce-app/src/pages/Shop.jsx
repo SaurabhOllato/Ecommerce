@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard";
 const sampleProduct = {
   name: "Rose Gold Necklace Set",
   price: 499,
-  image: "/Jhumka.jpeg", // Make sure this exists in public/images or src/assets
+  image: "https://res.cloudinary.com/dxscy1ixg/image/upload/v1750316287/pexels-cottonbro-9428777_zgnh0c.jpg", // Make sure this exists in public/images or src/assets
 };
 
 const Shop = () => {
