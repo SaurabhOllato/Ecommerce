@@ -13,8 +13,9 @@ const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const dispatch = useDispatch();
-const navigate = useNavigate();
-const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  // const { user } = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.user);
 
   const navClasses = `fixed left-0 w-full top-0 z-50 transition-all duration-300 ${
     isHome
@@ -164,30 +165,52 @@ const { isAuthenticated, user } = useSelector((state) => state.auth);
           {/* Icons on the right */}
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-4">
-             {/* USER MENU DROPDOWN */}
-  <div className="flex items-center gap-4">
-      {user ? (
-        <div className="relative group">
-          <button className="text-pink-600 font-semibold">
-            Hi, {user.name}
-          </button>
-          <div className="absolute hidden group-hover:flex flex-col bg-white shadow-md rounded mt-2 w-40 p-2 z-50">
-            <Link to="/profile" className="hover:bg-gray-100 px-2 py-1">Profile</Link>
-            <Link to="/orders" className="hover:bg-gray-100 px-2 py-1">Orders</Link>
-            <Link to="/contact" className="hover:bg-gray-100 px-2 py-1">Contact</Link>
-            <button
-              onClick={() => dispatch(logoutUser())}
-              className="text-left hover:bg-gray-100 px-2 py-1 text-red-500"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      ) : (
-        <Link to="/auth" className="text-pink-600 font-medium">Login</Link>
-      )}
-    </div>
+              {/* USER MENU DROPDOWN */}
+              <div className="flex items-center gap-4">
+                {user ? (
+                  <div className="relative group">
+                    <button
+                      className="flex items-center gap-2 text-pink-600 font-semibold hover:text-pink-700 transition"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Hi, <span className="capitalize">{user.name}</span>
+                      <User className="h-5 w-5" />
+                    </button>
 
+                    <div className="absolute right-0 hidden group-hover:flex flex-col bg-white shadow-lg rounded-xl mt-2 w-44 p-2 z-50 transition-all duration-300 ease-in-out">
+                      <Link
+                        to="/profile"
+                        className="px-3 py-2 rounded hover:bg-gray-100 text-sm font-medium text-gray-700"
+                      >
+                        🧑 Profile
+                      </Link>
+                      <Link
+                        to="/orders"
+                        className="px-3 py-2 rounded hover:bg-gray-100 text-sm font-medium text-gray-700"
+                      >
+                        📦 Orders
+                      </Link>
+                      <Link
+                        to="/contact"
+                        className="px-3 py-2 rounded hover:bg-gray-100 text-sm font-medium text-gray-700"
+                      >
+                        📞 Contact
+                      </Link>
+                      <button
+                        onClick={() => dispatch(logoutUser())}
+                        className="text-left px-3 py-2 rounded hover:bg-red-50 text-sm font-medium text-red-500 hover:text-red-600"
+                      >
+                        🚪 Logout
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <Link to="/auth" className="text-pink-600 font-medium">
+                    Login
+                  </Link>
+                )}
+              </div>
             </div>
             {showSearch && (
               <input
@@ -197,7 +220,14 @@ const { isAuthenticated, user } = useSelector((state) => state.auth);
               />
             )}
             {/* wishlist */}
-            <Link to="/wishlist" className="relative">
+            <Link
+              to="/wishlist"
+              className={`p-1 transition-colors relative group ${
+                isScrolled
+                  ? "text-black hover:text-primary"
+                  : "text-subtext hover:text-accent"
+              }`}
+            >
               <Heart className="h-5 w-5" />
               {wishlistCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 py-0.5 rounded-full">

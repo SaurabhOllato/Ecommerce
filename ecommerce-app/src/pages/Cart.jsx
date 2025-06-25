@@ -1,7 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Trash2 } from "lucide-react";
-import { decrementQuantity, incrementQuantity, removeFromCart } from "../feautures/cartActions";
+import {  Trash2 } from "lucide-react";
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeFromCart,
+} from "../feautures/cartActions";
+import { Link } from "react-router-dom";
 // import {
 //   removeFromCart,
 //   incrementQuantity,
@@ -11,8 +16,9 @@ import { decrementQuantity, incrementQuantity, removeFromCart } from "../feautur
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems || []);
-  console.log(cartItems);
-  
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  // console.log(cartItems);
 
   const totalAmount = cartItems.reduce((total, item) => {
     const price = Number(item.price || 0);
@@ -22,8 +28,21 @@ const Cart = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">Your Cart</h2>
-
-      {cartItems.length === 0 ? (
+      {!isAuthenticated ? (
+        <div className="flex items-center justify-center min-h-[80vh]">
+          <div className="text-center bg-white p-8 rounded-xl shadow-lg">
+            <p className="text-gray-600 text-lg mb-4">
+              Please login to view your cart.
+            </p>
+            <Link
+              to="/auth"
+              className="mt-2 inline-block px-6 py-2 bg-pink-600 text-white text-sm font-medium rounded-md hover:bg-pink-700 transition-colors"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      ) : cartItems.length === 0 ? (
         <p className="text-gray-500">Your cart is empty.</p>
       ) : (
         <>

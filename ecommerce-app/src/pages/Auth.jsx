@@ -12,7 +12,6 @@
 //   const navigate = useNavigate();
 //   const dispatch = useDispatch();
 
-
 //   const handleSendOtp = async (e) => {
 //   e.preventDefault();
 
@@ -40,7 +39,6 @@
 //     alert(err.message);
 //   }
 // };
-
 
 // const handleVerifyOtp = async (e) => {
 //   e.preventDefault();
@@ -77,7 +75,6 @@
 //     alert(err.message);
 //   }
 // };
-
 
 //  const handleRegister = async (e) => {
 //   e.preventDefault();
@@ -205,7 +202,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../feautures/authslice";
 
 const AuthPage = () => {
-  const [step, setStep] = useState("phone"); // phone | otp | name
+  const [step, setStep] = useState("phone");
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [name, setName] = useState("");
@@ -226,7 +223,7 @@ const AuthPage = () => {
       const res = await fetch("http://localhost:5000/api/auth/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({  phone_number: phone }),
+        body: JSON.stringify({ phone_number: phone }),
       });
 
       const data = await res.json();
@@ -239,31 +236,35 @@ const AuthPage = () => {
     }
   };
 
-  const handleVerifyOtp = async (e) => {
-    e.preventDefault();
-    if (otp.length !== 6) return alert("Enter 6-digit OTP");
+const handleVerifyOtp = async (e) => {
+  e.preventDefault();
+  if (otp.length !== 6) return alert("Enter 6-digit OTP");
 
-    try {
-      const res = await fetch("http://localhost:5000/api/auth/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone_number: phone, otp }),
-      });
+  try {
+    const res = await fetch("http://localhost:5000/api/auth/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ phone_number: phone, otp }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) throw new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
 
-      if (isNewUser) {
-        setStep("name");
-      } else {
-        alert("✅ Logged in");
-        navigate("/");
-      }
-    } catch (err) {
-      alert("❌ OTP verification failed: " + err.message);
+    if (isNewUser) {
+      setStep("name");
+    } else {
+      alert("✅ Logged in");
+
+      // ✅ FIX: Dispatch user info
+      dispatch(loginUser({ name: data.name, phone }));
+
+      navigate("/");
     }
-  };
+  } catch (err) {
+    alert("❌ OTP verification failed: " + err.message);
+  }
+};
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -280,8 +281,8 @@ const AuthPage = () => {
       if (!res.ok) throw new Error(data.message);
 
       alert("✅ Registered successfully");
-      dispatch(loginUser({ name, phone })); // store name + phone in redux
-
+      console.log("Logged in user:", { name, phone });
+      dispatch(loginUser({ name, phone }));
       navigate("/");
     } catch (err) {
       alert("❌ Registration failed: " + err.message);
@@ -289,9 +290,13 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-200 to-white flex items-center justify-center relative">
-      <div className="absolute inset-0 backdrop-blur-md" />
-      <div className="bg-white/40 backdrop-blur-md rounded-xl shadow-lg p-8 w-full max-w-md z-10">
+    <div className="min-h-screen flex items-center justify-center relative bg-cover bg-center bg-[url('https://res.cloudinary.com/dxscy1ixg/image/upload/v1750316288/pexels-arnold-nagy-195342381-12002672_jd6wpx.jpg')]">
+      {/* Background Blur Overlay */}
+      <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
+
+      {/* Form Card */}
+      <div className="bg-white/30 backdrop-blur-2xl rounded-2xl shadow-xl p-8 w-full max-w-md z-10 border border-white/40">
+        <h1 className="text-center text-xl">Login/Register</h1>
         <h2 className="text-2xl font-bold text-center text-pink-600 mb-6">
           {step === "phone" && "Enter your Mobile Number"}
           {step === "otp" && "Enter OTP sent to your number"}
@@ -304,14 +309,14 @@ const AuthPage = () => {
               <input
                 type="tel"
                 placeholder="Phone Number"
-                className="w-full border border-gray-300 rounded px-4 py-2"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
               <button
                 type="submit"
                 onClick={handleSendOtp}
-                className="w-full bg-pink-600 text-white rounded py-2 hover:bg-pink-700 transition"
+                className="w-full bg-pink-600 text-white rounded-md py-2 hover:bg-pink-700 transition"
               >
                 Send OTP
               </button>
@@ -323,14 +328,14 @@ const AuthPage = () => {
               <input
                 type="text"
                 placeholder="Enter OTP"
-                className="w-full border border-gray-300 rounded px-4 py-2"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
               />
               <button
                 type="submit"
                 onClick={handleVerifyOtp}
-                className="w-full bg-pink-600 text-white rounded py-2 hover:bg-pink-700 transition"
+                className="w-full bg-pink-600 text-white rounded-md py-2 hover:bg-pink-700 transition"
               >
                 Verify OTP
               </button>
@@ -342,27 +347,23 @@ const AuthPage = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full border border-gray-300 rounded px-4 py-2"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
               <button
                 type="submit"
                 onClick={handleRegister}
-                className="w-full bg-pink-600 text-white rounded py-2 hover:bg-pink-700 transition"
+                className="w-full bg-pink-600 text-white rounded-md py-2 hover:bg-pink-700 transition"
               >
                 Complete Registration
               </button>
             </>
           )}
         </form>
-
-       
-       
       </div>
     </div>
   );
 };
 
 export default AuthPage;
-
